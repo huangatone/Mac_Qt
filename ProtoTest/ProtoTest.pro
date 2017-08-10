@@ -53,7 +53,10 @@ SOURCES += \
     fllineitem.cpp \
     flglobal.cpp \
     fl_job.pb.cc \
-    fl_defs.pb.cc
+    fl_defs.pb.cc \
+    macexplore.cpp \
+    filetablemodel.cpp \
+    mytableview.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -83,7 +86,11 @@ HEADERS += \
     fllineitem.h \
     flglobal.h \
     fl_job.pb.h \
-    fl_defs.pb.h
+    fl_defs.pb.h \
+    macexplore.h \
+    filetablemodel.h \
+    mytableview.h \
+    filetablemodel.h
 
 FORMS += \
         mainwindow.ui \
@@ -91,21 +98,16 @@ FORMS += \
     flcreatefloordlg.ui \
     flcreatejobdlg.ui \
     flcreatewiodlg.ui \
-    flcreatezcdlg.ui
+    flcreatezcdlg.ui \
+    macexplore.ui
 
 RESOURCES += \
     protoRC.qrc
 
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../usr/local/lib/release/ -lprotobuf
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../usr/local/lib/debug/ -lprotobuf
-else:unix: LIBS += -L$$PWD/../../../../usr/local/lib/ -lprotobuf
+win32:CONFIG(release, debug|release): LIBS += -L/usr/local/lib/release/ -lprotobuf.13
+else:win32:CONFIG(debug, debug|release): LIBS += -L/usr/local/lib/debug/ -lprotobuf.13
+else:unix: LIBS += -L/usr/local/lib/ -lprotobuf.13
 
-INCLUDEPATH += $$PWD/../../../../usr/local/include
-DEPENDPATH += $$PWD/../../../../usr/local/include
-
-win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../../usr/local/lib/release/libprotobuf.a
-else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../../usr/local/lib/debug/libprotobuf.a
-else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../../usr/local/lib/release/protobuf.lib
-else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../../usr/local/lib/debug/protobuf.lib
-else:unix: PRE_TARGETDEPS += $$PWD/../../../../usr/local/lib/libprotobuf.a
+INCLUDEPATH += /usr/local/include
+DEPENDPATH += /usr/local/include
