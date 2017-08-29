@@ -106,6 +106,11 @@ QString JSWidget::exePath()
 
 void JSWidget::on_dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles )
 {
+	QFile html_file( exePath() + "/test.html");
+	if(html_file.open(QIODevice::ReadWrite) == false)
+		return;
+	QTextStream st( &html_file);
+
 	QStandardItemModel* md = (QStandardItemModel*)ui->tableView->model();
 	int nRow = md->rowCount();
 	//add new row
@@ -122,10 +127,17 @@ void JSWidget::on_dataChanged(const QModelIndex &topLeft, const QModelIndex &bot
 	}
 
 	//refresh chart;
+
 	QString html;
-	html = R"delimiter(<!DOCTYPE html><html><head><link rel="stylesheet" type="text/css" href="/Users/rong/Desktop/projects/js/c3/c3.css">
-		   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script><script src="/Users/rong/Desktop/projects/js/c3/c3.js"></script>
-		   </head><body><h1>A Web Page</h1>
+	html = R"delimiter(<!DOCTYPE html>
+		   <html>
+		   <head>
+		   <link rel="stylesheet" type="text/css" href="/Users/rong/Desktop/projects/js/c3/c3.css">
+		   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		   <script src="/Users/rong/Desktop/projects/js/c3/c3.js"></script>
+		   </head>
+		   <body>
+		   <h1>A Web Page</h1>
 		   <p id="demo">A Paragraph</p>
 			<div id="chart"></div>
 			<div id="chart2"></div>
@@ -150,40 +162,39 @@ void JSWidget::on_dataChanged(const QModelIndex &topLeft, const QModelIndex &bot
 	//data += "data_value[7] = ['y',50,60,80];";
 	html += data;
 
-	QString chart1 = "var chart = c3.generate({\
-					  bindto: '#chart',\
-				   data: {\
-					x:'x',\
-					 columns:    data_value\
-				   },\
-				   type:'spline',\
-					axes: {\
-					   data1: 'y',\
-					   data2: 'y2',\
-					 },\
-					  axis: {\
-					 x: {\
-					   label: 'X Label'\
-					 },\
-					 y: {\
-					   label: {\
-						 text: 'Y Axis Label',\
-						 position: 'outer-middle'\
-					   },\
-					   min:-100,\
-					   max:400\
-\
-					 },\
-					 y2: {\
-					   show: true,\
-					   label: {\
-						 text: 'Y2 Axis Label',\
-						 position: 'outer-middle'\
-					   }\
-					 }\
-				   }\
-				 });\
-					  </script>";
+	QString chart1 = R"DDD(var chart = c3.generate({
+					  bindto: '#chart',
+				   data: {
+					x:'x',
+					 columns:    data_value
+				   },
+				   type:'spline',
+					axes: {
+					   data1: 'y',
+					   data2: 'y2',
+					 },
+					  axis: {
+					 x: {
+					   label: 'X Label'
+					 },
+					 y: {
+					   label: {
+						 text: 'Y Axis Label',
+						 position: 'outer-middle'
+					   },
+					   min:-100,
+					   max:400
+					 },
+					 y2: {
+					   show: true,
+					   label: {
+						 text: 'Y2 Axis Label',
+						 position: 'outer-middle'
+					   }
+					 }
+				   }
+				 });
+					  </script>)DDD";
 
 	html += chart1;
 
@@ -249,14 +260,12 @@ void JSWidget::on_dataChanged(const QModelIndex &topLeft, const QModelIndex &bot
 	//html += data;
 	html += chart1;
 
-	html += "</body></html>";
+	html += R"DDD(</body>
+			</html>)DDD";
 
 	//qDebug() << html;
 
-	QFile html_file( exePath() + "/test.html");
-	if(html_file.open(QIODevice::ReadWrite) == false)
-		return;
-	QTextStream st( &html_file);
+
 
 	st << html;
 	html_file.close();
