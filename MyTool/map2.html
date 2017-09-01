@@ -39,19 +39,13 @@
 
 
 </style>
-<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
-</script>
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQMC-XDcbgfPtySwq9J4AL2uG8tZXuTUo&callback=initMap">
-</script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQMC-XDcbgfPtySwq9J4AL2uG8tZXuTUo&callback=initMap"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js">
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js">
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.10.8/xlsx.full.min.js">
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.10.8/xlsx.full.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
 <script >
         var splitter,cont1,cont2;
@@ -129,21 +123,47 @@ function display(msg) {
 function ExcelExport(event) {
 
    
-
+    var group = new Array();
+    var index = 0;
     var input = event.target;
     var reader = new FileReader();
-    reader.onload = function(){
+    reader.onload = function()
+    {
         var fileData = reader.result;
         var wb = XLSX.read(fileData, {type : 'binary'});
 
         wb.SheetNames.forEach(function(sheetName){
         var rowObj =XLSX.utils.sheet_to_row_object_array(wb.Sheets[sheetName]);
         var jsonObj = JSON.stringify(rowObj);
+        
+        JSON.parse(jsonObj, (key, value) => {
+              console.log(key); // log the current property name, the last is "".
+              if(key == "col1")
+              {
+                   if (group.includes(value) == false)
+                   // console.log("new group");
+                        group.push(value);
+              }
+              console.log(value);
+              console.log('---------------\n');
+              return value;     // return the unchanged property value.
+            });
         console.log(jsonObj)
+        console.log('---------------\n');
         })
+
+         console.log('items size = ' + group.length);
+        for(var i= 0, l = group.length; i< l; i++)
+        {
+           console.log( 'item  = ' + group[i]);
+        }
     };
+
     var res = reader.readAsBinaryString(input.files[0]);
-    console.log(res);
+
+    console.log('---------------\n');
+   
+
   
 }
 
