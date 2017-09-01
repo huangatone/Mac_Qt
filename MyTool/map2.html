@@ -111,7 +111,7 @@
         }
 
 function handleClick(cb) {
-  display("Clicked, new value = " + cb.checked);
+  display("Clicked, new value = " + cb.checked + cb.value);
 }
 
 function display(msg) {
@@ -141,8 +141,22 @@ function ExcelExport(event) {
               if(key == "col1")
               {
                    if (group.includes(value) == false)
+                   {
                    // console.log("new group");
                         group.push(value);
+
+                        //var p = document.createElement('input');
+                        //p.type="checkbox";                        
+                        //p.value = value;
+                       // cont1.appendChild(p);
+                        //p.onclick =handleClick(p);
+
+                        var tt = document.createElement('p');
+                        tt.innerHTML = " <input type='checkbox' onclick='handleClick(this)' value= ' " + value + "' />" + value;
+                        cont1.appendChild(tt);
+
+
+                    }
               }
               console.log(value);
               console.log('---------------\n');
