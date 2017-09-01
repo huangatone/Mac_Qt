@@ -50,39 +50,38 @@
 <script >
         var splitter,cont1,cont2;
         var last_x,window_width;
+        var map ;
 
         function init()
         {
-                window_width=window.innerWidth;
-	splitter=document.getElementById("splitter");
-	cont1=document.getElementById("div1");
-	cont2=document.getElementById("div2");
-	var dx=cont1.clientWidth;
-	splitter.style.marginLeft=dx+"px";
-	dx+=splitter.clientWidth;
-	cont2.style.marginLeft=dx+"px";
-	dx=window_width-dx;
-	cont2.style.width=dx+"px";
-	splitter.addEventListener("mousedown",spMouseDown);
-
-
+            window_width=window.innerWidth;
+        	splitter=document.getElementById("splitter");
+        	cont1=document.getElementById("div1");
+        	cont2=document.getElementById("div2");
+        	var dx=cont1.clientWidth;
+        	splitter.style.marginLeft=dx+"px";
+        	dx+=splitter.clientWidth;
+        	cont2.style.marginLeft=dx+"px";
+        	dx=window_width-dx;
+        	cont2.style.width=dx+"px";
+        	splitter.addEventListener("mousedown",spMouseDown);
 
         }
 
         function spMouseDown(e)
         {
                 splitter.removeEventListener("mousedown",spMouseDown);
-	window.addEventListener("mousemove",spMouseMove);
-	window.addEventListener("mouseup",spMouseUp);
-	last_x=e.clientX;
+        	window.addEventListener("mousemove",spMouseMove);
+        	window.addEventListener("mouseup",spMouseUp);
+        	last_x=e.clientX;
         }
 
         function spMouseUp(e)
         {
-                window.removeEventListener("mousemove",spMouseMove);
-	window.removeEventListener("mouseup",spMouseUp);
-	splitter.addEventListener("mousedown",spMouseDown);
-	resetPosition(last_x);
+            window.removeEventListener("mousemove",spMouseMove);
+        	window.removeEventListener("mouseup",spMouseUp);
+        	splitter.addEventListener("mousedown",spMouseDown);
+        	resetPosition(last_x);
         }
 
         function spMouseMove(e)
@@ -92,27 +91,37 @@
 
         function resetPosition(nowX)
         {
-                var dx=nowX-last_x;
-	dx+=cont1.clientWidth;
-	cont1.style.width=dx+"px";
-	splitter.style.marginLeft=dx+"px";
-	dx+=splitter.clientWidth;
-	cont2.style.marginLeft=dx+"px";
-	dx=window_width-dx;
-	cont2.style.width=dx+"px";
-	last_x=nowX;
+            var dx=nowX-last_x;
+        	dx+=cont1.clientWidth;
+        	cont1.style.width=dx+"px";
+        	splitter.style.marginLeft=dx+"px";
+        	dx+=splitter.clientWidth;
+        	cont2.style.marginLeft=dx+"px";
+        	dx=window_width-dx;
+        	cont2.style.width=dx+"px";
+        	last_x=nowX;
         }
 
-        function initMap() {
-                var map = new google.maps.Map(document.getElementById('div2'), {
-	zoom: 3,
-	center: {lat: -28.024, lng: 140.887}
-	});
+        function initMap() 
+        {
+            map = new google.maps.Map(document.getElementById('div2'), {
+        	zoom: 3,
+        	center: {lat: -28.024, lng: 140.887}
+        	});
         }
 
-function handleClick(cb) {
-  display("Clicked, new value = " + cb.checked + cb.value);
-}
+        function handleClick(cb) 
+        {
+            display("Clicked, new value = " + cb.checked + cb.value);
+
+            var latLng = new google.maps.LatLng(  -33.865427,  151.196123);
+
+            var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map
+                  });
+
+        }
 
 function display(msg) {
   var p = document.createElement('p');
