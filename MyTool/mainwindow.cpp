@@ -68,12 +68,12 @@ MainWindow::MainWindow(QWidget *parent) :
 //[a-zA-Z0-9]{1,100}
 	 QRegExpValidator* vpro = new QRegExpValidator(QRegExp("[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}"),this);
 	 ui->lineEdit ->setValidator(vpro);
-	 ui->lineEdit_2 ->setValidator(new QRegExpValidator(QRegExp("[\\w]{1,100}"),this));
+	 //ui->lineEdit_2 ->setValidator(new QRegExpValidator(QRegExp("[\\w]{1,100}"),this));
 
 	 ui->dateEdit->setDate(QDate::fromString("2012/9/09","yyyy/MM/dd"));
 	 ui->dateEdit->setCurrentSectionIndex(0);
 	//connect(ui->dateEdit,SIGNAL(dateChanged(QDate)), this ,SLOT(on_dateEdit_dateChanged(QDate)));
-	 ui->comboBox_2->setCurrentIndex(-1);
+
 
 	 QDate dt = QDate::fromString("2012/10/2","yyyy/M/d");
 	 //if(dt == QDate() )qDebug() << dt;
@@ -126,6 +126,18 @@ MainWindow::MainWindow(QWidget *parent) :
 	std::unique_ptr<long> p(new long);
 
 	*p = 10;
+
+	QPushButton *button=new QPushButton;
+	button->setText("click me");
+	QListWidgetItem *item=new QListWidgetItem;
+	ui->listWidget->insertItem(0,item);
+	ui->listWidget->setItemWidget(item,button);
+
+	QStandardItemModel* m= new QStandardItemModel();
+	m->setColumnCount(2);
+	m->setRowCount(2);
+	ui->listView->setModel(m);
+	//ui->listView->model()->insertRow(0);
 }
 
 MainWindow::~MainWindow()
@@ -142,15 +154,7 @@ void MainWindow::on_dateEdit_dateChanged(const QDate& date)
 
 void MainWindow::on_toolButton_clicked()
 {
-	auto aa = ui->lineEdit_7->text();
-	QDate dt = QDate::fromString( aa ,"yyyy/MM/dd");
-	ui->lineEdit_4->setText( dt.toString("yyyy/MM/dd"));
 
-	dt = QDate::fromString( ui->lineEdit_7->text() ,"yy/M/d");
-	ui->lineEdit_5->setText( dt.toString("yyyy/MM/dd"));
-
-	dt = QDate::fromString( ui->lineEdit_7->text() ,"yy/M/d");
-	ui->lineEdit_6->setText( dt.toString("yyyy/MM/dd"));
 
 	/*Dialog dlg;
 
@@ -164,5 +168,5 @@ void MainWindow::on_toolButton_clicked()
 
 void MainWindow::addItem(QString str)
 {
-	ui->comboBox_2->addItem(str);
+	//ui->comboBox_2->addItem(str);
 }

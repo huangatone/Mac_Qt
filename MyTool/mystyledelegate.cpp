@@ -4,6 +4,8 @@
 #include <QTextDocument>
 #include <QAbstractTextDocumentLayout>
 #include <QDateEdit>
+#include <QSpinBox>
+#include <QtWidgets>
 
 #include "mystyledelegate.h"
 
@@ -23,10 +25,34 @@ QWidget* MyStyleDelegate::createEditor(QWidget *parent, const QStyleOptionViewIt
 	auto ee = qobject_cast<QDateEdit*>(wid);
 	if(ee)
 		ee->setDisplayFormat("yyyy:mm:dd");
-	//int value = index.model()->data(index, Qt::EditRole).toInt();
-   // QSpinBox *editor = new QSpinBox(parent);
-   // editor->setMinimum(0);
-   // editor->setMaximum(100);
+
+	auto ee1 = qobject_cast<QSpinBox*>(wid);
+
+
+	if(parent->inherits("ConfigDialog"))
+	{
+
+			QComboBox* cb = new QComboBox(parent);
+			return cb;
+			QCheckBox* p = new QCheckBox(parent);
+			p->setStyleSheet(QLatin1String("\nbackground-color:rgb(255, 255, 255);"));
+			p->setText("Test Only");
+			p->setChecked( index.data().toBool());
+			return p;
+		}
+		/*else if( pro == DFSITE_BEGINDATE || pro == DFSITE_ENDDATE || pro == DFSITE_PROTOCOLDATE1
+				 || pro == DFSITE_PROTOCOLDATE2 || pro == DFSITE_PROTOCOLDATE4
+				 || pro == DFSITE_PROTOCOLDATE3 || pro == DFSITE_PROTOCOLDATE5)
+		{
+			if(index.data().toString() !="")
+			{
+				QDateEdit* de = new QDateEdit(pt);
+				de->setDisplayFormat("yyyy/MM/dd");
+				de ->setDate( index.data().toDate() );
+				return de;
+			}
+		}*/
+
 	return wid;
 }
 
