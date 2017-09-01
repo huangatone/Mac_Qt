@@ -1,29 +1,11 @@
 #include "mymodel.h"
 #include <QDate>
+#include <QDebug>
 
 MyModel::MyModel(QObject *parent)
 	:QStandardItemModel(parent )
 {
-	setColumnCount(10);
-	setRowCount(11);
 
-	for(int n=0; n<10; n++)
-	{
-		setHeaderData( n,Qt::Horizontal,QString::number(n) + " Col");
-		setHeaderData( n,Qt::Vertical,QString::number(n) + " Row");
-	}
-
-	for(int n=0; n<10; n++)
-		for(int m=0; m<10; m++)
-		{
-			QModelIndex in = index(m,n);//QAbstractItemModel::createIndex(m,n);
-			setData(in,QString::number(n) + " * " + QString::number(m) );
-		}
-
-
-	QModelIndex in = index(10,0);//QAbstractItemModel::createIndex(m,n);
-	setData(in,QColor(Qt::red) );
-	setData( index(10,1), QDate::currentDate());
 }
 
 
@@ -38,6 +20,37 @@ QVariant MyModel::headerData(int section, Qt::Orientation orientation, int role 
 	return QStandardItemModel::headerData(section,orientation,role);
 }
 
+void MyModel::setDB( MyDB* db)
+{
+	_db = db;
+	int col = 0;
+	setColumnCount( db->_head_data.size());
+	//insertRows(0,1);
+
+	for(auto title : db->_head_data)
+	{
+		setHeaderData(col,Qt::Horizontal,title);
+		col++;
+	}
+	int row = 0;
+	col = 0;
+	for(auto list : db->_data)
+	{
+		row = 0;
+		for( auto value: list)
+		{
+			int n = rowCount();
+			if(rowCount() <= row )
+			{
+				qDebug() << "row" << row;
+				insertRows(row,1);
+			}
+			setData(index(row,col),value);
+			row ++;
+		}
+		col ++;
+	}
+}
 
 QVariant MyModel::data(const QModelIndex &index, int role ) const
 {
@@ -48,10 +61,57 @@ QVariant MyModel::data(const QModelIndex &index, int role ) const
 	return QStandardItemModel::data(index,  role );
 }
 
+bool MyModel::isEdited()
+{
+	int row;
+	for (row=0; row<rowCount(); row++)
+	{
+		if( isEdited(row))
+			return true;
+	}
+	return false;
+}
+
+bool MyModel::isEdited(int row)
+{
+	int  col;
+	for (col=0; col< columnCount() ; col++)
+	{
+		if (isEdited(row,col) )
+			return true;
+	}
+	return false;
+}
+
+bool MyModel::isEdited(int row,int col)
+{
+	return data(row,col,Qt::UserRole).toString().trimmed() != data(row,col,Qt::DisplayRole).toString().trimmed() ;
+}
+
+QVariant MyModel::data(int row, int col, int role ) const
+{
+	return QStandardItemModel::data(index(row,col),  role );
+}
+
 MyDB::MyDB(QObject *p)
 	:QObject(p)
 {
+	QStringList l1 = QStringList() <<
+	"const" << "GLenum ZERO" << "= 0";
+	_data.append(l1);
+	l1 = QStringList() << 	"const" << "GLenum ONE" << "= 1";
+	_data.append(l1);
+	l1 = QStringList() << 	"const" << "GLenum ONE" << "= 1";
+	_data.append(l1);
+	l1 = QStringList() << 	"const" << "GLenum ONE" << "= 1";
+	_data.append(l1);
+
+	_head_data << "d1" << "d2" << "d3" << "d4";
 
 }
 
-MyDB::~MyDB(){}
+MyDB::~MyDB(){
+	//BUG
+	//TODO
+	//FIXME
+}

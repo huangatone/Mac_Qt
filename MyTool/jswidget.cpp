@@ -89,16 +89,16 @@ QString JSWidget::exePath()
 #ifdef Q_OS_WIN32
 	ui->web->load( QUrl(path + "/test2.html"));
 #else ifdef Q_OS_MAC
-	qDebug() << path;
+	//qDebug() << path;
 	int n = path.lastIndexOf("/");
 	path = path.left(n);
-	qDebug() << path;
+	//qDebug() << path;
 	n = path.lastIndexOf("/");
 	path = path.left(n);
-	qDebug() << path;
+	//qDebug() << path;
 	n = path.lastIndexOf("/");
 	path = path.left(n);
-	qDebug() << path;
+	//qDebug() << path;
 
 #endif
 	return path;

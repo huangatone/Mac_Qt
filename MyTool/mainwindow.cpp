@@ -15,6 +15,11 @@
 #include "mymodel.h"
 #include "dialog.h"
 #include "myinputdialog.h"
+#include "mtthread.h"
+
+#include <vector>
+
+using namespace  std;
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -71,8 +76,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	 ui->comboBox_2->setCurrentIndex(-1);
 
 	 QDate dt = QDate::fromString("2012/10/2","yyyy/M/d");
-	 if(dt == QDate() )qDebug() << dt;
-	 qDebug() << dt.toString("yyyy/MM/dd");
+	 //if(dt == QDate() )qDebug() << dt;
+	 //qDebug() << dt.toString("yyyy/MM/dd");
 	 dt = QDate();
 
 	 MyInputDialog dlg;
@@ -87,8 +92,40 @@ MainWindow::MainWindow(QWidget *parent) :
 	 dlg.insertWidget(r2);
 	// dlg.exec();
 
+	 vector<int> iVector;
+	 for(int i=0; i<20; i++)
+		 iVector.push_back(i*4);
 
+	 for_each( begin(iVector), end(iVector), [](int n){
+		 //if(n%2==0)
+			//qDebug() << n;
+	 });
 
+	 for (auto itm : iVector) {
+		//qDebug() << itm;
+		 }
+
+	// qDebug() << "age = " << my_age;
+	 float ourArray[5];
+
+	 for(auto& i: ourArray)
+	 {
+		i = 10.004f;
+	 }
+
+	 for(auto& i: ourArray)
+	 {
+		//qDebug() << i;
+	 }
+	/*MtThread th;
+	th.pa = this;
+	th.thread1();
+	th.thread2();
+*/
+
+	std::unique_ptr<long> p(new long);
+
+	*p = 10;
 }
 
 MainWindow::~MainWindow()
@@ -122,4 +159,10 @@ void MainWindow::on_toolButton_clicked()
 
 
 	dlg.exec();*/
+}
+
+
+void MainWindow::addItem(QString str)
+{
+	ui->comboBox_2->addItem(str);
 }

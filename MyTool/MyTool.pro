@@ -41,7 +41,8 @@ SOURCES += \
     dialog.cpp \
     myinputdialog.cpp \
     mydatadb.cpp \
-    jswidget.cpp
+    jswidget.cpp \
+    mtthread.cpp
 
 
 HEADERS += \
@@ -61,7 +62,8 @@ HEADERS += \
     dialog.h \
     myinputdialog.h \
     mydatadb.h \
-    jswidget.h
+    jswidget.h \
+    mtthread.h
 
 
 FORMS += \

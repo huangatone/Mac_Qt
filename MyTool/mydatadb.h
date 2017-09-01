@@ -11,21 +11,32 @@ using namespace std;
 enum class DataType
 {
 	Color = 0,
-	Inter = 1,
-	String = 2,
-	List,
-	Check,
+	Title,
 	Date,
 	Time,
 	Line,
-	Rectangle,
-	Circle,
-	Polygon,
 	Pixmap,
 	Url,
-	Dot,
-	Radio
+	Choise
 	//TODO: Add more
+};
+
+struct DataObject
+{
+	DataType _type;
+	list<string> _data;
+};
+
+enum class SharpType
+{
+	Line = 0,
+	Circle,
+	Rectangle,
+	Dot,
+	Polygon,
+	Triangle,
+	Arrow,
+	Dot_Line
 };
 
 
@@ -40,9 +51,9 @@ private:
 	 string _name;
 	 int _major_version;
 	 int _minor_version;
-	// variant value;
-	 string _type;
-	 list<string> _data;
+	 SharpType _type;
+
+	 list<double> _data;
 };
 
 class MyDataDB

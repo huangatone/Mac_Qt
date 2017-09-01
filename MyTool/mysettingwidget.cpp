@@ -19,6 +19,30 @@ MySettingWidget::MySettingWidget(QWidget *parent) :
 
 
 	MyModel* md = new MyModel(this);
+	MyDB* db = new MyDB();
+	md->setDB(db);
+/*
+	md->setColumnCount(10);
+	md->setRowCount(11);
+
+	for(int n=0; n<10; n++)
+	{
+		md->setHeaderData( n,Qt::Horizontal,QString::number(n) + " Col");
+		md->setHeaderData( n,Qt::Vertical,QString::number(n) + " Row");
+	}
+
+	for(int n=0; n<10; n++)
+		for(int m=0; m<10; m++)
+		{
+			QModelIndex in = md->index(m,n);//QAbstractItemModel::createIndex(m,n);
+			md->setData(in,QString::number(n) + " * " + QString::number(m) );
+		}
+
+
+	QModelIndex in = md->index(10,0);//QAbstractItemModel::createIndex(m,n);
+	md->setData(in,QColor(Qt::red) );
+	md->setData( md->index(10,1), QDate::currentDate());
+*/
 	ui->tableView->setModel(md);
 	MyStyleDelegate* st = new MyStyleDelegate(this);
 	ui->tableView->setItemDelegate(st);

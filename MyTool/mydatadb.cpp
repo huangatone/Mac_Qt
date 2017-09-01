@@ -6,7 +6,7 @@ MyDataDB::MyDataDB()
 }
 
 int MyDataDB::get_count() {
-	return MyDataDB::get_data().size();
+	return get_data().size();
 
 }
 
@@ -33,5 +33,5 @@ MyData::MyData(string name, int major, int minor)
 }
 
 MyData::~MyData() {
-	//BUG
+	//BUG Jas-->do it!
 }
