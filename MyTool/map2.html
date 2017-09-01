@@ -51,6 +51,7 @@
         var splitter,cont1,cont2;
         var last_x,window_width;
         var map ;
+        var markers = [];
 
         function init()
         {
@@ -115,21 +116,25 @@
             display("Clicked, new value = " + cb.checked + cb.value);
 
             var latLng = new google.maps.LatLng(  -33.865427,  151.196123);
-
+            var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
             var marker = new google.maps.Marker({
                     position: latLng,
-                    map: map
+                    map: map,
+                    label: cb.value,
+                    icon: image
                   });
 
         }
 
-function display(msg) {
-  var p = document.createElement('p');
-  p.innerHTML = msg;
-  cont1.appendChild(p);
-}
+    function display(msg) 
+    {
+      var p = document.createElement('p');
+      p.innerHTML = msg;
+      cont1.appendChild(p);
+    }
 
-function ExcelExport(event) {
+    function ExcelExport(event) 
+    {
 
    
     var group = new Array();
@@ -189,6 +194,20 @@ function ExcelExport(event) {
 
   
 }
+
+
+        function setMapOnAll(map) 
+        {
+                for (var i = 0; i < markers.length; i++)
+                 {
+                  markers[i].setMap(map);
+                }
+        }
+
+      // Removes the markers from the map, but keeps them in the array.
+      function clearMarkers() {
+        setMapOnAll(null);
+      }
 
 </script>
 </head>
