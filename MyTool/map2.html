@@ -187,31 +187,31 @@
         JSON.parse(jsonObj, (key, value) => {
               //console.log(key); // log the current property name, the last is "".
               
-              if( key == "ENUM")
+              if( key.trim() == "ENUM")
 			  {
 				name = value;				
 			  }
-              else if(key == "B17")
+              else if(key.trim() == "B17")
               {
 				band = value;                 
               }
-			  else if( key == "Long")
+			  else if( key.trim() == "Long")
 			  {
 				lng = value;
 			  }
-			  else if(key == "Lat" )//&& tput < 3000
+			  else if(key.trim() == "Lat" )//&& tput < 3000
 			  {
 				lat = value;
 				
 				//todo
 				
-				if(band  == "B17 configured")
+				if(band.trim()  == "B17 configured")
 				{
 					//if(tput > 300)			
 					createMarker(markersB17_Config,name,lng,lat);
 					band = "";
 				}
-				else if(band == "B17 Installed")
+				else if(band.trim() == "B17 Installed")
 				{
 				//if(tput > 300)
 				console.log("Installed ---" + name + " " + lng + " " + lat);
@@ -219,13 +219,13 @@
 					createMarker(markersB17_Install,name,lng,lat);
 					band = "";
 				}
-				else if(band == "B17 No")
+				else if(band.trim() == "B17 No")
 				{
 				//if(tput > 300)
 					createMarker(markersB17_NO,name,lng,lat);
 					band = "";
 				}
-				else if (key == "Estimated" )
+				else if (key.trim() == "Estimated" )
 				tput = value;
 			}
 			
