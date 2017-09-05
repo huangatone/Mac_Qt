@@ -57,6 +57,7 @@
 	
 	var markersB14 = [];
 	
+<<<<<<< HEAD
 	function getCircle(magnitude) {
         return {
           path: google.maps.SymbolPath.CIRCLE,
@@ -68,12 +69,19 @@
         };
       }
 	  
+=======
+>>>>>>> 71328270d1a19d7ab21923ebaa3ddcb8fa90f665
 	function init()
 	{
 		window_width=window.innerWidth;
 		splitter=document.getElementById("splitter");
+<<<<<<< HEAD
 		cont1=document.getElementById("div2");
 		cont2=document.getElementById("div1");
+=======
+		cont1=document.getElementById("div1");
+		cont2=document.getElementById("div2");
+>>>>>>> 71328270d1a19d7ab21923ebaa3ddcb8fa90f665
 		var dx=cont1.clientWidth;
 		splitter.style.marginLeft=dx+"px";
 		dx+=splitter.clientWidth;
@@ -116,7 +124,10 @@
 		dx=window_width-dx;
 		cont2.style.width=dx+"px";
 		last_x=nowX;
+<<<<<<< HEAD
 		google.maps.event.trigger(map, "resize");
+=======
+>>>>>>> 71328270d1a19d7ab21923ebaa3ddcb8fa90f665
 	}
 
 	function initMap() 
@@ -136,7 +147,11 @@
 				position: latLng,
 				map: null,
 				label: name,
+<<<<<<< HEAD
 				icon: getCircle(5)
+=======
+				icon: image
+>>>>>>> 71328270d1a19d7ab21923ebaa3ddcb8fa90f665
 			  });
 		group.push(marker);
 	}
@@ -185,6 +200,7 @@
         var jsonObj = JSON.stringify(rowObj);
         // ----------------- read every cell ----------------------------------------------
         JSON.parse(jsonObj, (key, value) => {
+<<<<<<< HEAD
               //console.log(key); // log the current property name, the last is "".
               
               if( key.trim() == "ENUM")
@@ -192,6 +208,15 @@
 				name = value;				
 			  }
               else if(key.trim() == "B17")
+=======
+              console.log(key); // log the current property name, the last is "".
+              
+              if( key == "ENUM")
+			  {
+				name = value;				
+			  }
+              else if(key == "B17")
+>>>>>>> 71328270d1a19d7ab21923ebaa3ddcb8fa90f665
               {
 				band = value;                 
               }
@@ -202,11 +227,17 @@
 			  else if(key == "Lat" )//&& tput < 3000
 			  {
 				lat = value;
+<<<<<<< HEAD
 				
+=======
+				console.log("lat ---" + name + " " + lng + " " + lat);
+				console.log( "band = " + band);
+>>>>>>> 71328270d1a19d7ab21923ebaa3ddcb8fa90f665
 				//todo
 				
 				if(band  == "B17 configured")
 				{
+<<<<<<< HEAD
 					//if(tput > 300)			
 					createMarker(markersB17_Config,name,lng,lat);
 					band = "";
@@ -224,6 +255,21 @@
 				//if(tput > 300)
 					createMarker(markersB17_NO,name,lng,lat);
 					band = "";
+=======
+					//if(tput > 300)
+			
+					createMarker(markersB17_Config,name,lng,lat);
+				}
+				else if(band == "Installed")
+				{
+				//if(tput > 300)
+					createMarker(markersB17_Install,name,lng,lat);
+				}
+				else if(band == "No")
+				{
+				//if(tput > 300)
+					createMarker(markersB17_NO,name,lng,lat);
+>>>>>>> 71328270d1a19d7ab21923ebaa3ddcb8fa90f665
 				}
 				else if (key == "Estimated" )
 				tput = value;
@@ -231,8 +277,13 @@
 			
 			  // and so on;
 			  
+<<<<<<< HEAD
               //console.log(value);
               //console.log('---------------\n');
+=======
+              console.log(value);
+              console.log('---------------\n');
+>>>>>>> 71328270d1a19d7ab21923ebaa3ddcb8fa90f665
               return value;     // return the unchanged property value.
             });
         console.log(jsonObj)
