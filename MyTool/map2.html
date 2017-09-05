@@ -48,83 +48,169 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.10.8/xlsx.full.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
 <script >
-        var splitter,cont1,cont2;
-        var last_x,window_width;
-        var map ;
-        var markers = [];
+	var splitter,cont1,cont2;
+	var last_x,window_width;
+	var map ;
+	var markersB17_Config = [];
+	var markersB17_Install = [];
+	var markersB17_NO = [];
+	
+	var markersB14 = [];
+	
+	function init()
+	{
+		window_width=window.innerWidth;
+		splitter=document.getElementById("splitter");
+		cont1=document.getElementById("div1");
+		cont2=document.getElementById("div2");
+		var dx=cont1.clientWidth;
+		splitter.style.marginLeft=dx+"px";
+		dx+=splitter.clientWidth;
+		cont2.style.marginLeft=dx+"px";
+		dx=window_width-dx;
+		cont2.style.width=dx+"px";
+		splitter.addEventListener("mousedown",spMouseDown);
 
-        function init()
-        {
-            window_width=window.innerWidth;
-        	splitter=document.getElementById("splitter");
-        	cont1=document.getElementById("div1");
-        	cont2=document.getElementById("div2");
-        	var dx=cont1.clientWidth;
-        	splitter.style.marginLeft=dx+"px";
-        	dx+=splitter.clientWidth;
-        	cont2.style.marginLeft=dx+"px";
-        	dx=window_width-dx;
-        	cont2.style.width=dx+"px";
-        	splitter.addEventListener("mousedown",spMouseDown);
+	}
 
-        }
+	function spMouseDown(e)
+	{
+		splitter.removeEventListener("mousedown",spMouseDown);
+		window.addEventListener("mousemove",spMouseMove);
+		window.addEventListener("mouseup",spMouseUp);
+		last_x=e.clientX;
+	}
 
-        function spMouseDown(e)
-        {
-                splitter.removeEventListener("mousedown",spMouseDown);
-        	window.addEventListener("mousemove",spMouseMove);
-        	window.addEventListener("mouseup",spMouseUp);
-        	last_x=e.clientX;
-        }
+	function spMouseUp(e)
+	{
+		window.removeEventListener("mousemove",spMouseMove);
+		window.removeEventListener("mouseup",spMouseUp);
+		splitter.addEventListener("mousedown",spMouseDown);
+		resetPosition(last_x);
+	}
 
-        function spMouseUp(e)
-        {
-            window.removeEventListener("mousemove",spMouseMove);
-        	window.removeEventListener("mouseup",spMouseUp);
-        	splitter.addEventListener("mousedown",spMouseDown);
-        	resetPosition(last_x);
-        }
+	function spMouseMove(e)
+	{
+		resetPosition(e.clientX);
+	}
 
-        function spMouseMove(e)
-        {
-                resetPosition(e.clientX);
-        }
+	function resetPosition(nowX)
+	{
+		var dx=nowX-last_x;
+		dx+=cont1.clientWidth;
+		cont1.style.width=dx+"px";
+		splitter.style.marginLeft=dx+"px";
+		dx+=splitter.clientWidth;
+		cont2.style.marginLeft=dx+"px";
+		dx=window_width-dx;
+		cont2.style.width=dx+"px";
+		last_x=nowX;
+	}
 
-        function resetPosition(nowX)
-        {
-            var dx=nowX-last_x;
-        	dx+=cont1.clientWidth;
-        	cont1.style.width=dx+"px";
-        	splitter.style.marginLeft=dx+"px";
-        	dx+=splitter.clientWidth;
-        	cont2.style.marginLeft=dx+"px";
-        	dx=window_width-dx;
-        	cont2.style.width=dx+"px";
-        	last_x=nowX;
-        }
+	function initMap() 
+	{
+		map = new google.maps.Map(document.getElementById('div2'), {
+		zoom: 8,
+        center: {lat:43.643794, lng:-79.613486}
+		});
+	}
+	
+	function createMarkB17_Config(name,lng,lat)
+	{
+		var latLng = new google.maps.LatLng(  lat,lng);
+		var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+		var marker = new google.maps.Marker({
+				position: latLng,
+				map: null,
+				label: name,
+				icon: image
+			  });
+		markersB17_Config.push(marker);
+	}
+	
+	function handleClickB17_Config(cb)
+	{
+	console.log("B17 clicked length = " + markersB17_Config.length + "checked = " + cb.checked );
+		var p = null;
+		if(cb.checked)
+		{
+		p = map;
+			
+		}
+			for (var i = 0; i < markersB17_Config.length; i++)
+			{
+				markersB17_Config[i].setMap(p);
+			}
+	}
+	
+	function createMarkB17_Install(name,lng,lat)
+	{
+		var latLng = new google.maps.LatLng(  lat,lng);
+		var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+		var marker = new google.maps.Marker({
+				position: latLng,
+				map: null,
+				label: name,
+				icon: image
+			  });
+		markersB17_Install.push(marker);
+	}
+	
+	function handleClickB17_Install(cb)
+	{
+		console.log("B17 clicked length = " + markersB17_Install.length + "checked = " + cb.checked );
+		var p = null;
+		if(cb.checked)
+		{
+			p = map;			
+		}
+		for (var i = 0; i < markersB17_Install.length; i++)
+		{
+			markersB17_Install[i].setMap(p);
+		}
+	}
+	
+	function createMarkB17_NO(name,lng,lat)
+	{
+		var latLng = new google.maps.LatLng(  lat,lng);
+		var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+		var marker = new google.maps.Marker({
+				position: latLng,
+				map: null,
+				label: name,
+				icon: image
+			  });
+		markersB17_NO.push(marker);
+	}
+	
+	function handleClickB17_NO(cb)
+	{
+		console.log("B17 clicked length = " + markersB17_NO.length + "checked = " + cb.checked );
+		var p = null;
+		if(cb.checked)
+		{
+			p = map;			
+		}
+		for (var i = 0; i < markersB17_NO.length; i++)
+		{
+			markersB17_NO[i].setMap(p);
+		}
+	}
+	
+	function handleClick(cb) 
+	{
+		display("Clicked, new value = " + cb.checked + cb.value);
 
-        function initMap() 
-        {
-            map = new google.maps.Map(document.getElementById('div2'), {
-        	zoom: 3,
-        	center: {lat: -28.024, lng: 140.887}
-        	});
-        }
+		var latLng = new google.maps.LatLng(  -33.865427,  151.196123);
+		var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+		var marker = new google.maps.Marker({
+				position: latLng,
+				map: map,
+				label: cb.value,
+				icon: image
+			  });
 
-        function handleClick(cb) 
-        {
-            display("Clicked, new value = " + cb.checked + cb.value);
-
-            var latLng = new google.maps.LatLng(  -33.865427,  151.196123);
-            var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-            var marker = new google.maps.Marker({
-                    position: latLng,
-                    map: map,
-                    label: cb.value,
-                    icon: image
-                  });
-
-        }
+	}
 
     function display(msg) 
     {
@@ -133,11 +219,17 @@
       cont1.appendChild(p);
     }
 
+	//------------ read xml file ------------------------------
     function ExcelExport(event) 
-    {
-
-   
+    {   
     var group = new Array();
+	var name ;
+	var band;
+	
+	var tput;
+	var lng;
+	var lat;
+	
     var index = 0;
     var input = event.target;
     var reader = new FileReader();
@@ -146,32 +238,54 @@
         var fileData = reader.result;
         var wb = XLSX.read(fileData, {type : 'binary'});
 
+		// --------------- read every sheet ----------------------------------------------
         wb.SheetNames.forEach(function(sheetName){
         var rowObj =XLSX.utils.sheet_to_row_object_array(wb.Sheets[sheetName]);
         var jsonObj = JSON.stringify(rowObj);
-        
+        // ----------------- read every cell ----------------------------------------------
         JSON.parse(jsonObj, (key, value) => {
               console.log(key); // log the current property name, the last is "".
-              if(key == "col1")
+              
+              if( key == "ENUM")
+			  {
+				name = value;				
+			  }
+              else if(key == "B17")
               {
-                   if (group.includes(value) == false)
-                   {
-                   // console.log("new group");
-                        group.push(value);
-
-                        //var p = document.createElement('input');
-                        //p.type="checkbox";                        
-                        //p.value = value;
-                       // cont1.appendChild(p);
-                        //p.onclick =handleClick(p);
-
-                        var tt = document.createElement('p');
-                        tt.innerHTML = " <input type='checkbox' onclick='handleClick(this)' value= ' " + value + "' />" + value;
-                        cont1.appendChild(tt);
-
-
-                    }
+				band = value;                 
               }
+			  else if( key == "Long")
+			  {
+				lng = value;
+			  }
+			  else if(key == "Lat" )//&& tput < 3000
+			  {
+				lat = value;
+				console.log("lat ---" + name + " " + lng + " " + lat);
+				console.log( "band = " + band);
+				//todo
+				
+				if(band  == "B17 configured")
+				{
+					//if(tput > 300)
+					createMarkB17_Config(name,lng,lat);
+				}
+				else if(band == "Installed")
+				{
+				//if(tput > 300)
+					createMarkB17_Install(name,lng,lat);
+				}
+				else if(band == "No")
+				{
+				//if(tput > 300)
+					createMarkB17_NO(name,lng,lat);
+				}
+				else if (key == "Estimated" )
+				tput = value;
+			}
+			
+			  // and so on;
+			  
               console.log(value);
               console.log('---------------\n');
               return value;     // return the unchanged property value.
@@ -196,30 +310,68 @@
 }
 
 
-        function setMapOnAll(map) 
-        {
-                for (var i = 0; i < markers.length; i++)
-                 {
-                  markers[i].setMap(map);
-                }
-        }
+	function setMapOnAll(map) 
+	{
+		for (var i = 0; i < markers.length; i++)
+		 {
+		  markers[i].setMap(map);
+		}
+	}
 
       // Removes the markers from the map, but keeps them in the array.
-      function clearMarkers() {
-        setMapOnAll(null);
-      }
+	function clearMarkers() {
+	setMapOnAll(null);
+	}
 
 </script>
 </head>
 <body onload="init();">
         <div id="div1">
-        <form >
-          <input type="checkbox" name="vehicle" value="Bike" onclick='handleClick(this);'> I have a bike<br>
-          <input type="checkbox" name="vehicle" value="Car" checked onclick='handleClick(this);'> I have a car<br>
-          <input type="submit" value="Submit">
-          <input type="file" id="file" ng-model="csvFile"  
-    onchange='ExcelExport(event)'/>
+        <form >      
+          <input type="file" id="file" ng-model="csvFile"  onchange='ExcelExport(event)'/>
         </form>
+		<h2 id = "lowband"> High Band </h2>
+		<table border = 1>
+			<tr> 
+				<td> Band <td > Config <td> Installed <td> NO
+			</tr>
+			
+			<tr>
+			    <td> B17 <td> <input type="checkbox"  name="vehicle" value="" onclick='handleClickB17_Config(this);'>  
+				<td> <input type="checkbox" name="vehicle" value="" onclick='handleClickB17_Install(this);'>
+				<td> <input type="checkbox" name="vehicle" value="" onclick='handleClickB17_NO(this);'>
+			</tr>
+			
+			<tr>
+			    <td> B4 <td> <input type="checkbox"  name="vehicle" value="" onclick='handleClickB17_Config(this);'>  
+				<td> <input type="checkbox" name="vehicle" value="" onclick='handleClickB17_Install(this);'>
+				<td> <input type="checkbox" name="vehicle" value="" onclick='handleClickB17_NO(this);'>
+			</tr>
+			
+		</table>
+		
+		
+		<h2 id = "highband"> High Band </h2>
+		
+		<table border = 1>
+			<tr> 
+				<td> Band <td > Config <td> Installed <td> NO
+			</tr>
+			
+			<tr>
+			    <td> B17 <td> <input type="checkbox"  name="vehicle" value="" onclick='handleClickB17_Config(this);'>  
+				<td> <input type="checkbox" name="vehicle" value="" onclick='handleClickB17_Install(this);'>
+				<td> <input type="checkbox" name="vehicle" value="" onclick='handleClickB17_NO(this);'>
+			</tr>
+			
+			<tr>
+			    <td> B4 <td> <input type="checkbox"  name="vehicle" value="" onclick='handleClickB17_Config(this);'>  
+				<td> <input type="checkbox" name="vehicle" value="" onclick='handleClickB17_Install(this);'>
+				<td> <input type="checkbox" name="vehicle" value="" onclick='handleClickB17_NO(this);'>
+			</tr>
+			
+		</table>
+		
         </div>
         <div id="splitter"></div>
         <div id="div2"></div>
