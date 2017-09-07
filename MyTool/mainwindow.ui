@@ -77,47 +77,6 @@
          </rect>
         </property>
        </widget>
-       <widget class="QDateEdit" name="dateEdit">
-        <property name="geometry">
-         <rect>
-          <x>180</x>
-          <y>10</y>
-          <width>100</width>
-          <height>24</height>
-         </rect>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="mouseTracking">
-         <bool>false</bool>
-        </property>
-        <property name="tabletTracking">
-         <bool>false</bool>
-        </property>
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="accelerated">
-         <bool>false</bool>
-        </property>
-        <property name="minimumDate">
-         <date>
-          <year>1752</year>
-          <month>10</month>
-          <day>14</day>
-         </date>
-        </property>
-        <property name="currentSection">
-         <enum>QDateTimeEdit::YearSection</enum>
-        </property>
-        <property name="displayFormat">
-         <string>yyyy/MM/dd</string>
-        </property>
-       </widget>
        <widget class="QLineEdit" name="lineEdit_3">
         <property name="geometry">
          <rect>
@@ -137,8 +96,8 @@
        <widget class="QListWidget" name="listWidget">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>80</y>
+          <x>12</x>
+          <y>96</y>
           <width>256</width>
           <height>192</height>
          </rect>

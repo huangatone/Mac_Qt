@@ -19,6 +19,7 @@
 
 #include <vector>
 
+#include "testtoollib.h"
 using namespace  std;
 
 
@@ -70,8 +71,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	 ui->lineEdit ->setValidator(vpro);
 	 //ui->lineEdit_2 ->setValidator(new QRegExpValidator(QRegExp("[\\w]{1,100}"),this));
 
-	 ui->dateEdit->setDate(QDate::fromString("2012/9/09","yyyy/MM/dd"));
-	 ui->dateEdit->setCurrentSectionIndex(0);
+
 	//connect(ui->dateEdit,SIGNAL(dateChanged(QDate)), this ,SLOT(on_dateEdit_dateChanged(QDate)));
 
 
@@ -138,6 +138,11 @@ MainWindow::MainWindow(QWidget *parent) :
 	m->setRowCount(2);
 	ui->listView->setModel(m);
 	//ui->listView->model()->insertRow(0);
+
+	double aaa = 1999.199;
+
+	TestToolLib lib;
+
 }
 
 MainWindow::~MainWindow()

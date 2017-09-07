@@ -138,6 +138,17 @@
 				label: name,
 				icon: getCircle(5)
 			  });
+
+		var infowindow = new google.maps.InfoWindow({
+          content: "test information"
+        });
+
+		marker.addListener('click', function() {
+          map.setZoom(8);
+          map.setCenter(marker.getPosition());
+          infowindow.open(marker.get('map'), marker);
+        });
+
 		group.push(marker);
 	}
 	// Removes/shows the markers from the map, but keeps them in the array.
