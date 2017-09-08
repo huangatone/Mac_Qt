@@ -32,6 +32,8 @@ function init()
     cont2.style.width=dx+"px";
     splitter.addEventListener("mousedown",spMouseDown);
 
+
+
 }
 
 function spMouseDown(e)
@@ -180,6 +182,9 @@ function read_sheet(wb,sheetName)
     document.getElementById("id1").innerHTML = markersB17_Config.length;
     document.getElementById("id2").innerHTML = markersB17_Install.length;
     document.getElementById("id3").innerHTML = markersB17_NO.length;
+
+    var pia = ['D1',markersB17_Config.length,'D2',markersB17_Install.length,'D3',markersB17_NO.length]
+    createChart(pia);
 }
 
 //------------ read xml file ------------------------------
@@ -210,4 +215,25 @@ function ExcelExport(event)
     var res = reader.readAsBinaryString(input.files[0]);
 
     console.log('---------------\n');
+}
+
+function createChart(pia_data)
+{
+    var column = [];
+    for(var i=0; i< pia_data.length; i+=2)
+    {
+        column[i/2] = [ pia_data[i],pia_data[i+1]];
+    }
+
+	var chart4 = c3.generate({
+           bindto: '#chart4',
+    data: {
+        columns: column,
+        types: {
+            data1: 'area',
+            data2: 'area-spline'
+        }
+    }
+});
+        chart4.transform('pie');
 }

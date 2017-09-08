@@ -18,6 +18,7 @@
 #include "mtthread.h"
 
 #include <vector>
+#include <QPrinter>
 
 #include "testtoollib.h"
 using namespace  std;
@@ -142,6 +143,21 @@ MainWindow::MainWindow(QWidget *parent) :
 	double aaa = 1999.199;
 
 	TestToolLib lib;
+
+
+	QPrinter printer;
+
+
+	printer.setOutputFormat(QPrinter::PdfFormat);
+	printer.setFullPage(false);
+	printer.setPageSize(QPrinter::Letter);
+	QRect papersize = printer.paperRect();
+	QRect pagesize = printer.pageRect();
+	fprintf(stderr, "--papersize x= %d,y = %d \n",papersize.width(),papersize.height()); fflush(stderr);
+	fprintf(stderr, "--pagesize x= %d,y = %d \n",pagesize.width(),pagesize.height()); fflush(stderr);
+
+	QImage img("/Users/rong/Desktop/Work/sample.png");
+	img.save("/Users/rong/Desktop/Work/auto.pdf","PDF");
 
 }
 
