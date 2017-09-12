@@ -9,11 +9,11 @@ var markersB14 = [];
 
 var value_b17_config = [];
 value_b17_config.push('data1');
-value_b17_config.push(5);
-value_b17_config.push(6);
-value_b17_config.push(7);
+var value_b17_config_x = [];
+value_b17_config_x[0] = 'x';
 var v17 = [];
-v17[0] = value_b17_config;
+v17[0] = value_b17_config_x; 
+v17[1] = value_b17_config;
 	
 function getCircle(magnitude)
 {
@@ -40,8 +40,8 @@ function init()
     dx=window_width-dx;
     cont2.style.width=dx+"px";
     splitter.addEventListener("mousedown",spMouseDown);
-
-
+    google.charts.load("current", {packages:["corechart"]});
+    G_chart();
 
 }
 
@@ -163,6 +163,7 @@ function read_sheet(wb,sheetName)
                     //if(tput > 300)
                     createMarker(markersB17_Config,name,lng,lat);
                     value_b17_config.push(tput);
+                    value_b17_config_x.push(value_b17_config_x.length);
                     band = "";
                 }
                 else if(band.trim() == "B17 Installed")
@@ -200,7 +201,7 @@ function read_sheet(wb,sheetName)
     var chart3 = c3.generate({
            bindto: '#chart3',
     data: {
-      
+      x:'x',
         columns: v17,
         types: {
             data1: 'spline'
@@ -251,13 +252,39 @@ function createChart(pia_data)
 
 	var chart4 = c3.generate({
            bindto: '#chart4',
-    data: {
-        columns: column,
-        types: {
-            data1: 'area',
-            data2: 'area-spline'
-        }
-    }
-});
+		   data: {
+		        columns: column,
+		        types: {
+		            data1: 'area',
+		            data2: 'area-spline'
+		        }
+		    }
+	});
         chart4.transform('pie');
+}
+
+
+function G_chart() 
+{
+	
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['ID', 'X', 'Y', 'Temperature'],
+          ['',   80,  167,      12],
+          ['',   79,  136,      13],
+          ['',   78,  184,      5],
+          ['',   72,  278,      23],
+          ['',   81,  200,      21],
+          ['',   72,  170,      10],
+          ['',   68,  477,      8]
+        ]);
+
+        var options = {
+          colorAxis: {colors: ['yellow', 'red']}
+        };
+
+        var chart = new google.visualization.BubbleChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
 }
