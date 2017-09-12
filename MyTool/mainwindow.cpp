@@ -21,6 +21,7 @@
 #include <QPrinter>
 
 #include "testtoollib.h"
+#include "testclass.h"
 using namespace  std;
 
 
@@ -140,24 +141,25 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->listView->setModel(m);
 	//ui->listView->model()->insertRow(0);
 
-	double aaa = 1999.199;
-
-	TestToolLib lib;
-
-
 	QPrinter printer;
-
-
 	printer.setOutputFormat(QPrinter::PdfFormat);
 	printer.setFullPage(false);
 	printer.setPageSize(QPrinter::Letter);
+
+	QPageLayout lo;
+	lo.setOrientation(QPageLayout::Landscape);
+	//printer.setPageLayout(lo);
+printer.setPageOrientation(QPageLayout::Landscape);
 	QRect papersize = printer.paperRect();
 	QRect pagesize = printer.pageRect();
 	fprintf(stderr, "--papersize x= %d,y = %d \n",papersize.width(),papersize.height()); fflush(stderr);
 	fprintf(stderr, "--pagesize x= %d,y = %d \n",pagesize.width(),pagesize.height()); fflush(stderr);
 
-	QImage img("/Users/rong/Desktop/Work/sample.png");
-	img.save("/Users/rong/Desktop/Work/auto.pdf","PDF");
+
+	TestClass cl;
+	TestClass cl2;
+	TestToolLib lib;
+	TestToolLib lib2;
 
 }
 

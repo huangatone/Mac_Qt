@@ -5,6 +5,15 @@ var markersB17_Config = [];
 var markersB17_Install = [];
 var markersB17_NO = [];
 var markersB14 = [];
+
+
+var value_b17_config = [];
+value_b17_config.push('data1');
+value_b17_config.push(5);
+value_b17_config.push(6);
+value_b17_config.push(7);
+var v17 = [];
+v17[0] = value_b17_config;
 	
 function getCircle(magnitude)
 {
@@ -153,13 +162,14 @@ function read_sheet(wb,sheetName)
                 {
                     //if(tput > 300)
                     createMarker(markersB17_Config,name,lng,lat);
+                    value_b17_config.push(tput);
                     band = "";
                 }
                 else if(band.trim() == "B17 Installed")
                 {
                     //if(tput > 300)
                     console.log("Installed ---" + name + " " + lng + " " + lat);
-                    console.log( "band = " + band);
+                    console.log(band);  
                     createMarker(markersB17_Install,name,lng,lat);
                     band = "";
                 }
@@ -169,9 +179,10 @@ function read_sheet(wb,sheetName)
                     createMarker(markersB17_NO,name,lng,lat);
                     band = "";
                 }
-                else if (key.trim() == "Estimated" )
-                    tput = value;
+                
             }
+            else if (key.trim() == "Estimated" )
+                    tput = value;
           //console.log(value);
           //console.log('---------------\n');
           return value;     // return the unchanged property value.
@@ -185,6 +196,19 @@ function read_sheet(wb,sheetName)
 
     var pia = ['D1',markersB17_Config.length,'D2',markersB17_Install.length,'D3',markersB17_NO.length]
     createChart(pia);
+
+    var chart3 = c3.generate({
+           bindto: '#chart3',
+    data: {
+      
+        columns: v17,
+        types: {
+            data1: 'spline'
+           
+        },
+        
+    }
+});
 }
 
 //------------ read xml file ------------------------------

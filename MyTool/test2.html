@@ -8,6 +8,7 @@
 
 <script type="text/javascript">
   var columns_t1 = [];
+  var chart ;
   columns_t1[0] = ['x',10,20,50,60]
       for (var i = 1; i < 6; i++ ) {
         columns_t1[i] = ['data' + i, 10 * i, 20 * i, 30 * i];
@@ -16,7 +17,7 @@
 	
 	function myFunction222() {
         columns_t1[6] = ['y' ,50,60,80];
-        var chart = c3.generate({
+        chart = c3.generate({
            bindto: '#chart',
         data: {
          x:'x',
@@ -118,23 +119,32 @@
         
     }
 
+
+    function Function222() {
+      columns_t1[6] = ['ddd',1,5,9];
+      chart.load({
+        columns: columns_t1
+    });
+
+    }
+
 </script>
 
 
  
 </head>
 
-<body>
+<body onload="myFunction222()">
 
 <h1>A Web Page</h1>
 <p id="demo">A Paragraph</p>
-<button type="button" onclick="myFunction222()">Try it</button>
+<button type="button" onclick="Function222()">Try it</button>
  <div id="chart"></div>
  <div id="chart2"></div>
  <div id="chart3"></div>
  <div id="chart4"></div>
 
-<script type="text/javascript"> myFunction222()</script>>
+
 
 </body>
 </html>

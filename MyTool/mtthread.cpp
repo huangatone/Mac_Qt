@@ -19,6 +19,7 @@ void MtThread::call_from_thread(int tid, MainWindow *p) {
 
 int MtThread::thread1()
 {
+
 	std::thread t(&thread_function);   // t starts running
 	qDebug() << "main thread\n";
 	t.join();   // main thread waits for the thread t to finish

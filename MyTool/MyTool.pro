@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui webenginewidgets
+QT       += core gui webenginewidgets script
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -42,7 +42,8 @@ SOURCES += \
     myinputdialog.cpp \
     mydatadb.cpp \
     jswidget.cpp \
-    mtthread.cpp
+    mtthread.cpp \
+    testclass.cpp
 
 
 HEADERS += \
@@ -63,7 +64,8 @@ HEADERS += \
     myinputdialog.h \
     mydatadb.h \
     jswidget.h \
-    mtthread.h
+    mtthread.h \
+    testclass.h
 
 
 FORMS += \
@@ -75,9 +77,12 @@ FORMS += \
     jswidget.ui
 
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../TestLib/release/ -lTestLib.1.0.0
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../TestLib/debug/ -lTestLib.1.0.0
-else:unix: LIBS += -L$$PWD/../TestLib/ -lTestLib.1.0.0
 
-INCLUDEPATH += $$PWD/../TestLib
-DEPENDPATH += $$PWD/../TestLib
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/release/ -lTestLib.1.0.0
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/debug/ -lTestLib.1.0.0
+else:unix: LIBS += -L$$PWD/lib/ -lTestLib.1.0.0
+
+INCLUDEPATH += ../TestLib
+DEPENDPATH += $$PWD/.
