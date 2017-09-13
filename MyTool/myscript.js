@@ -19,7 +19,64 @@ v17[1] = value_b17_config;
 var band_list = [];
 var band_marker = new Map();
 
+function create_html_items()
+{
+	var pia = [];
+ 
+   band_list.forEach(function(element) {
 
+    	var item = document.createElement("TD");
+    	item.innerHTML = element;
+    	document.getElementById("field_name").appendChild(item);
+
+
+    	var item1 = document.createElement("TD");
+    	var checkbox = document.createElement('input');
+		checkbox.type = "checkbox";
+		checkbox.name = "name";
+		checkbox.value = element;
+		checkbox.id = "id";
+		var group = band_marker.get(element);
+		checkbox.onclick = function() {
+			handleClick(this, band_marker.get(element));
+    		// access properties using this keyword   
+        	console.log("no 0---------");    
+		};
+
+		var label = document.createElement('label');
+		label.htmlFor = "id";
+		label.appendChild(document.createTextNode( band_marker.get(element).length ));
+
+		item1.appendChild(checkbox);
+		item1.appendChild(label);
+		document.getElementById("field_group").appendChild(item1);
+    	console.log(element);
+    	pia.push(element);
+    	pia.push(band_marker.get(element).length);
+	});
+	
+    //init label value;
+   
+
+    
+    createChart(pia);
+
+    var chart3 = c3.generate({
+           bindto: '#chart3',
+    data: {
+      x:'x',
+        columns: v17,
+        types: {
+            data1: 'spline'
+           
+        },
+        
+	    }
+	});
+
+	G_chart();
+	
+}
 	
 function getCircle(magnitude)
 {
@@ -47,7 +104,7 @@ function init()
     cont2.style.width=dx+"px";
     splitter.addEventListener("mousedown",spMouseDown);
     google.charts.load("current", {packages:["corechart"]});
-    G_chart();
+    
 
 }
 
@@ -193,56 +250,7 @@ function read_sheet(wb,sheetName)
     console.log(jsonObj)
     console.log('---------------\n');
 
-   
- 
-   band_list.forEach(function(element) {
-
-    	var item = document.createElement("TD");
-    	item.innerHTML = element;
-    	document.getElementById("field_name").appendChild(item);
-
-
-    	var item1 = document.createElement("TD");
-    	var checkbox = document.createElement('input');
-		checkbox.type = "checkbox";
-		checkbox.name = "name";
-		checkbox.value = element;
-		checkbox.id = "id";
-		var group = band_marker.get(element);
-		checkbox.onclick = function() {
-			handleClick(this, band_marker.get(element));
-    		// access properties using this keyword   
-        	console.log("no 0---------");    
-		};
-
-		var label = document.createElement('label');
-		label.htmlFor = "id";
-		label.appendChild(document.createTextNode( band_marker.get(element).length ));
-
-		item1.appendChild(checkbox);
-		item1.appendChild(label);
-		document.getElementById("field_group").appendChild(item1);
-    	console.log(element);
-	});
-	
-    //init label value;
-   
-
-    var pia = ['D1',markersB17_Config.length,'D2',markersB17_Install.length,'D3',markersB17_NO.length]
-    createChart(pia);
-
-    var chart3 = c3.generate({
-           bindto: '#chart3',
-    data: {
-      x:'x',
-        columns: v17,
-        types: {
-            data1: 'spline'
-           
-        },
-        
-    }
-});
+   create_html_items();
 }
 
 //------------ read xml file ------------------------------
