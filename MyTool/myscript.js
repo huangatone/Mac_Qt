@@ -14,6 +14,12 @@ value_b17_config_x[0] = 'x';
 var v17 = [];
 v17[0] = value_b17_config_x; 
 v17[1] = value_b17_config;
+
+//band list
+var band_list = [];
+var band_marker = new Map();
+
+
 	
 function getCircle(magnitude)
 {
@@ -121,15 +127,23 @@ function showMarkers(group,m)
     }
 }
 
-
+ //checkbox click event
+function handleClick123(cb)
+{
+    var p = null;
+    console.log("clicked");
+   
+}
  //checkbox click event
 function handleClick(cb,group)
 {
     var p = null;
+    console.log("clicked");
     if(cb.checked)
     {
         p = map;
     }
+ 
     showMarkers(group,p);
 }
 
@@ -144,43 +158,31 @@ function read_sheet(wb,sheetName)
 
           if( key.trim() == "ENUM")
           {
-            name = value;
+            name = value.trim();
           }
           else if(key.trim() == "B17")
           {
-            band = value;
+            band = value.trim();
           }
           else if( key.trim() == "Long")
           {
-            lng = value;
+            lng = value.trim();
           }
           else if(key.trim() == "Lat" )//&& tput < 3000
           {
+          		
                 lat = value;
-                //todo
-                if(band.trim()  == "B17 configured")
+                if(band_list.indexOf(band) <= -1)
                 {
-                    //if(tput > 300)
-                    createMarker(markersB17_Config,name,lng,lat);
-                    value_b17_config.push(tput);
-                    value_b17_config_x.push(value_b17_config_x.length);
-                    band = "";
+                	band_list.push(band);
+                	var m = [];
+                	band_marker.set( band, m);
                 }
-                else if(band.trim() == "B17 Installed")
-                {
-                    //if(tput > 300)
-                    console.log("Installed ---" + name + " " + lng + " " + lat);
-                    console.log(band);  
-                    createMarker(markersB17_Install,name,lng,lat);
-                    band = "";
-                }
-                else if(band.trim() == "B17 No")
-                {
-                    //if(tput > 300)
-                    createMarker(markersB17_NO,name,lng,lat);
-                    band = "";
-                }
-                
+
+                createMarker(band_marker.get(band),name,lng,lat);
+                value_b17_config.push(tput);
+                value_b17_config_x.push(value_b17_config_x.length);
+                band = "";       
             }
             else if (key.trim() == "Estimated" )
                     tput = value;
@@ -190,10 +192,41 @@ function read_sheet(wb,sheetName)
     });
     console.log(jsonObj)
     console.log('---------------\n');
+
+   
+ 
+   band_list.forEach(function(element) {
+
+    	var item = document.createElement("TD");
+    	item.innerHTML = element;
+    	document.getElementById("field_name").appendChild(item);
+
+
+    	var item1 = document.createElement("TD");
+    	var checkbox = document.createElement('input');
+		checkbox.type = "checkbox";
+		checkbox.name = "name";
+		checkbox.value = element;
+		checkbox.id = "id";
+		var group = band_marker.get(element);
+		checkbox.onclick = function() {
+			handleClick(this, band_marker.get(element));
+    		// access properties using this keyword   
+        	console.log("no 0---------");    
+		};
+
+		var label = document.createElement('label');
+		label.htmlFor = "id";
+		label.appendChild(document.createTextNode( band_marker.get(element).length ));
+
+		item1.appendChild(checkbox);
+		item1.appendChild(label);
+		document.getElementById("field_group").appendChild(item1);
+    	console.log(element);
+	});
+	
     //init label value;
-    document.getElementById("id1").innerHTML = markersB17_Config.length;
-    document.getElementById("id2").innerHTML = markersB17_Install.length;
-    document.getElementById("id3").innerHTML = markersB17_NO.length;
+   
 
     var pia = ['D1',markersB17_Config.length,'D2',markersB17_Install.length,'D3',markersB17_NO.length]
     createChart(pia);

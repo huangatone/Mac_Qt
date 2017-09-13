@@ -48,10 +48,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.10.8/xlsx.full.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="/Users/rong/Desktop/projects/js/c3/c3.css">
+<link rel="stylesheet" type="text/css" href="c3/c3.css">
 
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script src="/Users/rong/Desktop/projects/js/c3/c3.js"></script>
+<script src="c3/c3.js"></script>
 
 <script src= "myscript.js"> </script>
 <script type="text/javascript">
@@ -76,22 +76,18 @@
 		<h2 id = "highband"> High Band </h2>
 		
 		<table border = 1>
-			<tr> 
-				<td> Band <td > Config <td> Installed <td> NO
+			<tr id = "field_name"> 
+				<td> Band 
 			</tr>
 			
-			<tr>
+			<tr id = "field_group">
 			    <td> B17 
-			    <td> <input type="checkbox"  name="vehicle" value="" onclick='handleClick(this,markersB17_Config);'>  <label id="id1">0</label>
-				<td> <input type="checkbox" name="vehicle" value="" onclick='handleClick(this,markersB17_Install);'> <label id="id2">0</label>
-				<td> <input type="checkbox" name="vehicle" value="" onclick='handleClick(this,markersB17_NO);'> <label id="id3">0</label>
+			    
 			</tr>
 			
 			<tr>
 			    <td> B4 1
-			    <td> <input type="checkbox"  name="vehicle" value="" onclick='handleClick(this,markersB17_Config);'>  
-				<td> <input type="checkbox" name="vehicle" value="" onclick='handleClick(this,markersB17_Install);'>
-				<td> <input type="checkbox" name="vehicle" value="" onclick='handleClick1(this,id1);'> <label id="id1">Other</label>
+			    
 			</tr>
 			
 		</table>
