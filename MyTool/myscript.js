@@ -7,13 +7,12 @@ var markersB17_NO = [];
 var markersB14 = [];
 
 
-var value_b17_config = [];
-value_b17_config.push('data1');
+
 var value_b17_config_x = [];
 value_b17_config_x[0] = 'x';
-var v17 = [];
-v17[0] = value_b17_config_x; 
-v17[1] = value_b17_config;
+var site_value = [];
+site_value[0] = value_b17_config_x; 
+
 
 //band list
 var band_list = [];
@@ -50,7 +49,7 @@ function create_html_items()
 		item1.appendChild(checkbox);
 		item1.appendChild(label);
 		document.getElementById("field_group").appendChild(item1);
-    	console.log(element);
+    	//console.log(element);
     	pia.push(element);
     	pia.push(band_marker.get(element).length);
 	});
@@ -60,12 +59,19 @@ function create_html_items()
 
     
     createChart(pia);
+	//console.log("------value--------");
+    //for(var i=0; i < site_value.length; i++)
+   //// {
+   // 	var g = site_value[i];
+   // 	for(var j = 0; j< g.length; j++)
+   // 		console.log( g[j]);
+    //}
 
     var chart3 = c3.generate({
            bindto: '#chart3',
     data: {
       x:'x',
-        columns: v17,
+        columns: site_value,
         types: {
             data1: 'spline'
            
@@ -75,7 +81,7 @@ function create_html_items()
 	});
 
 	G_chart();
-	
+
 }
 	
 function getCircle(magnitude)
@@ -234,11 +240,23 @@ function read_sheet(wb,sheetName)
                 	band_list.push(band);
                 	var m = [];
                 	band_marker.set( band, m);
+
+                	var v = [];
+                	v[0] = band;
+                	site_value[ site_value.length] = v;
                 }
 
                 createMarker(band_marker.get(band),name,lng,lat);
-                value_b17_config.push(tput);
-                value_b17_config_x.push(value_b17_config_x.length);
+
+				console.log("index: " + band_list.indexOf(band));
+                console.log ("data: " + site_value[ band_list.indexOf(band)+1 ][0]);
+                site_value[ band_list.indexOf(band) +1].push(tput);
+                if (value_b17_config_x.length < site_value[ band_list.indexOf(band)+1].length)
+                {
+                	value_b17_config_x.push ( site_value[ band_list.indexOf(band)+1].length );
+                }
+
+               
                 band = "";       
             }
             else if (key.trim() == "Estimated" )
@@ -247,8 +265,8 @@ function read_sheet(wb,sheetName)
           //console.log('---------------\n');
           return value;     // return the unchanged property value.
     });
-    console.log(jsonObj)
-    console.log('---------------\n');
+    //console.log(jsonObj)
+    //console.log('---------------\n');
 
    create_html_items();
 }

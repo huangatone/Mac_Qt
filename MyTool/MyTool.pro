@@ -43,7 +43,8 @@ SOURCES += \
     mydatadb.cpp \
     jswidget.cpp \
     mtthread.cpp \
-    testclass.cpp
+    testclass.cpp \
+    drawwidget.cpp
 
 
 HEADERS += \
@@ -65,7 +66,8 @@ HEADERS += \
     mydatadb.h \
     jswidget.h \
     mtthread.h \
-    testclass.h
+    testclass.h \
+    drawwidget.h
 
 
 FORMS += \

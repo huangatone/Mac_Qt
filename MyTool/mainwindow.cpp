@@ -149,18 +149,9 @@ MainWindow::MainWindow(QWidget *parent) :
 	QPageLayout lo;
 	lo.setOrientation(QPageLayout::Landscape);
 	//printer.setPageLayout(lo);
-printer.setPageOrientation(QPageLayout::Landscape);
+	printer.setPageOrientation(QPageLayout::Landscape);
 	QRect papersize = printer.paperRect();
 	QRect pagesize = printer.pageRect();
-	fprintf(stderr, "--papersize x= %d,y = %d \n",papersize.width(),papersize.height()); fflush(stderr);
-	fprintf(stderr, "--pagesize x= %d,y = %d \n",pagesize.width(),pagesize.height()); fflush(stderr);
-
-
-	TestClass cl;
-	TestClass cl2;
-	TestToolLib lib;
-	TestToolLib lib2;
-
 }
 
 MainWindow::~MainWindow()
