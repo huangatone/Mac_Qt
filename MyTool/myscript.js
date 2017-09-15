@@ -1,11 +1,6 @@
 var splitter,cont1,cont2;
 var last_x,window_width;
 var map ;
-var markersB17_Config = [];
-var markersB17_Install = [];
-var markersB17_NO = [];
-var markersB14 = [];
-
 
 
 var value_b17_config_x = [];
@@ -214,6 +209,8 @@ function read_sheet(wb,sheetName)
 {
     var rowObj =XLSX.utils.sheet_to_row_object_array(wb.Sheets[sheetName]);
     var jsonObj = JSON.stringify(rowObj);
+
+    console.log( document.getElementById("bandname").value);
     // ----------------- read every cell ----------------------------------------------
     JSON.parse(jsonObj, (key, value) =>
     {

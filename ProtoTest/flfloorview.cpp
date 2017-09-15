@@ -524,7 +524,7 @@ void FLFloorView::setFloor(QPointer<FLFloor> pFloor)
 	QString graph_svg = pFloor->getProperty("FloorGraph").value.toString();
 	if (QFile::exists(graph_svg) == false || graph_svg.endsWith("svg") == false)
 	{
-		graph_svg = "graphics/sample_floor_plan.svg";
+		graph_svg = "/Users/rong/mine/sample_floor_plan.svg";
 	}
 	else
 	{

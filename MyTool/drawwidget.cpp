@@ -10,11 +10,12 @@ void DrawWidget::paintEvent(QPaintEvent *e)
 {
 	QPainter p(this);
 
-	p.fillRect(rect(), QBrush(Qt::gray));
+	p.fillRect(rect(), QBrush(Qt::white));
 
 	QRect d_rt(0,0,20,10);
 	QRect rt = rect();
 
+	p.save();
 	p.translate( rt.width()/2, rt.height()/2);
 
 	p.setPen(Qt::red);
@@ -35,14 +36,19 @@ void DrawWidget::paintEvent(QPaintEvent *e)
 	p.setPen(Qt::black);
 	p.drawRect(d_rt);
 
+	p.restore();
 	p.resetTransform();
 
-	p.setBackgroundMode(Qt::OpaqueMode);
-	p.setBackground(QBrush( Qt::darkGray) );
-	p.setPen( Qt::white );
+	QRectF rectangle(10.0, 20.0, 80.0, 60.0);
+
+	QPainter painter(this);
+	painter.drawRoundedRect(rectangle, rectangle.width() /2 , rectangle.height() / 2);
+	return;
+	//NOTE draw picture with mode
+	p.setCompositionMode(QPainter::RasterOp_SourceXorDestination);	
 	p.setRenderHint(QPainter::SmoothPixmapTransform);
 
-	QPixmap pix("/Users/rong/Desktop/Work/12.png");
+	QPixmap pix("/Users/rong/Desktop/Work/13.png");
 
 	p.drawPixmap(rt,pix,pix.rect());
 
