@@ -88,3 +88,6 @@ else:unix: LIBS += -L$$PWD/lib/ -lTestLib.1.0.0
 
 INCLUDEPATH += ../TestLib
 DEPENDPATH += $$PWD/.
+
+RESOURCES += \
+    tool.qrc

@@ -45,7 +45,10 @@ void MyModel::setDB( MyDB* db)
 				qDebug() << "row" << row;
 				insertRows(row,1);
 			}
-			setData(index(row,col),value);
+			if(value.type() == QVariant::Bool)
+				setData(index(row,col),value.toBool()?"Yes":"No");
+			else
+				setData(index(row,col),value);
 			row ++;
 		}
 		col ++;
@@ -96,17 +99,17 @@ QVariant MyModel::data(int row, int col, int role ) const
 MyDB::MyDB(QObject *p)
 	:QObject(p)
 {
-	QStringList l1 = QStringList() <<
-	"const" << "GLenum ZERO" << "= 0";
+
+	QList<QVariant >  l1 = QList<QVariant >() <<	"const" << "GLenum ZERO" << "= 0" <<false;
 	_data.append(l1);
-	l1 = QStringList() << 	"const" << "GLenum ONE" << "= 1";
+	l1 = QList<QVariant >() << 	"const" << "GLenum ONE" << "= 1" << true;
 	_data.append(l1);
-	l1 = QStringList() << 	"const" << "GLenum ONE" << "= 1";
+	l1 = QList<QVariant >()<< 	"const" << "GLenum ONE" << "= 1" << true;
 	_data.append(l1);
-	l1 = QStringList() << 	"const" << "GLenum ONE" << "= 1";
+	l1 = QList<QVariant >() << 	"const" << "GLenum ONE" << "= 1" << false;
 	_data.append(l1);
 
-	_head_data << "d1" << "d2" << "d3" << "d4";
+	_head_data << "d1" << "d2" << "d3" << "d4" << "d5";
 
 }
 

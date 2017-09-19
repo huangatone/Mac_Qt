@@ -1,5 +1,6 @@
 #include "drawwidget.h"
 #include <QPainter>
+#include <QLinearGradient>
 
 DrawWidget::DrawWidget(QWidget *parent) : QWidget(parent)
 {
@@ -10,47 +11,22 @@ void DrawWidget::paintEvent(QPaintEvent *e)
 {
 	QPainter p(this);
 
-	p.fillRect(rect(), QBrush(Qt::white));
+	QLinearGradient linearGradient(0,0,rect().width(),rect().height()); //水平渐变
+		linearGradient.setColorAt(0.0,QColor(34,120,0));
+		linearGradient.setColorAt(0.5,QColor(34,120,0));
+		linearGradient.setColorAt(0.6,Qt::transparent);
+		linearGradient.setColorAt(1.0,Qt::transparent);
+		p.setBrush(QBrush(linearGradient));
 
-	QRect d_rt(0,0,20,10);
-	QRect rt = rect();
+		p.setPen(QPen(QColor(34,120,0), 1));
 
-	p.save();
-	p.translate( rt.width()/2, rt.height()/2);
+		p.drawRoundedRect(0,0,rect().width(),rect().height(),10, 10);
 
-	p.setPen(Qt::red);
-	p.drawRect(d_rt);
-
-	p.rotate(90);
-
-	p.setPen(Qt::green);
-	p.drawRect(d_rt);
-
-	p.rotate(90);
-
-	p.setPen(Qt::yellow);
-	p.drawRect(d_rt);
-
-	p.rotate(90);
-
-	p.setPen(Qt::black);
-	p.drawRect(d_rt);
-
-	p.restore();
-	p.resetTransform();
-
-	QRectF rectangle(10.0, 20.0, 80.0, 60.0);
-
-	QPainter painter(this);
-	painter.drawRoundedRect(rectangle, rectangle.width() /2 , rectangle.height() / 2);
-	return;
-	//NOTE draw picture with mode
-	p.setCompositionMode(QPainter::RasterOp_SourceXorDestination);	
-	p.setRenderHint(QPainter::SmoothPixmapTransform);
-
-	QPixmap pix("/Users/rong/Desktop/Work/13.png");
-
-	p.drawPixmap(rt,pix,pix.rect());
+		p.setCompositionMode(QPainter::RasterOp_SourceXorDestination  );
 
 
+
+		QPixmap pix("/Users/rong/Desktop/Work/13.png");
+
+		p.drawPixmap(rect(),pix,pix.rect());
 }

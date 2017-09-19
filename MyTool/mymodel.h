@@ -13,7 +13,7 @@ public:
 	~MyDB();
 
 	QStringList _head_data;
-	QList< QStringList> _data;
+	QList< QList<QVariant>> _data;
 };
 
 class MyModel : public QStandardItemModel

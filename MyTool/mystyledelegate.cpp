@@ -9,6 +9,8 @@
 
 #include "mystyledelegate.h"
 
+#define aaaa tr("bbb")
+
 MyStyleDelegate::MyStyleDelegate(QObject *parent) :
 	QItemDelegate(parent)
 {
@@ -26,20 +28,25 @@ QWidget* MyStyleDelegate::createEditor(QWidget *parent, const QStyleOptionViewIt
 	if(ee)
 		ee->setDisplayFormat("yyyy:mm:dd");
 
-	auto ee1 = qobject_cast<QSpinBox*>(wid);
+	auto sp = qobject_cast<QSpinBox*>(wid);
+	QCheckBox* ch = qobject_cast<QCheckBox*> (wid);
+	auto cb = qobject_cast<QComboBox*>(wid);
 
-
-	if(parent->inherits("ConfigDialog"))
+	if(cb)
+	{
+		cb->clear();
+		cb->addItem("yes");
+		cb->addItem("no");
+	}
+	if(ch)
 	{
 
-			QComboBox* cb = new QComboBox(parent);
-			return cb;
-			QCheckBox* p = new QCheckBox(parent);
-			p->setStyleSheet(QLatin1String("\nbackground-color:rgb(255, 255, 255);"));
-			p->setText("Test Only");
-			p->setChecked( index.data().toBool());
-			return p;
-		}
+		ch->setStyleSheet(QLatin1String("\nbackground-color:rgb(255, 255, 255);"));
+		ch->setText("Test Only");
+		ch->setChecked( index.data().toBool());
+
+	}
+
 		/*else if( pro == DFSITE_BEGINDATE || pro == DFSITE_ENDDATE || pro == DFSITE_PROTOCOLDATE1
 				 || pro == DFSITE_PROTOCOLDATE2 || pro == DFSITE_PROTOCOLDATE4
 				 || pro == DFSITE_PROTOCOLDATE3 || pro == DFSITE_PROTOCOLDATE5)
@@ -65,6 +72,7 @@ void MyStyleDelegate::setModelData(QWidget *editor, QAbstractItemModel *model,
 		model->setData(index, QVariant::fromValue(ee->date().toString("yyyy/MM/dd") ));
 
 	} else {
+		auto cb = qobject_cast<QComboBox*>(editor);
 		QItemDelegate::setModelData(editor, model, index);
 	}
 }

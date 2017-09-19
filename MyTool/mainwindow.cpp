@@ -152,6 +152,9 @@ MainWindow::MainWindow(QWidget *parent) :
 	printer.setPageOrientation(QPageLayout::Landscape);
 	QRect papersize = printer.paperRect();
 	QRect pagesize = printer.pageRect();
+
+	//ui->checkBox->setPixmap( ":/mytool/img/face-smile 2.png" );
+	//ui->checkBox->che
 }
 
 MainWindow::~MainWindow()
