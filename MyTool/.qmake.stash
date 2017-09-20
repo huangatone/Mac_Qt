@@ -1,4 +1,4 @@
-QMAKE_LICHECK_TIMESTAMP = "Fri Sep 15"
+QMAKE_LICHECK_TIMESTAMP = "Tue Sep 19"
 QMAKE_MAC_SDK.macosx.Path = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk
 QMAKE_MAC_SDK.macosx.PlatformPath = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform
 QMAKE_MAC_SDK.macosx.SDKVersion = 10.12

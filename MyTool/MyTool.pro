@@ -79,15 +79,9 @@ FORMS += \
     jswidget.ui
 
 
-
-
-
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/release/ -lTestLib.1.0.0
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/debug/ -lTestLib.1.0.0
-else:unix: LIBS += -L$$PWD/lib/ -lTestLib.1.0.0
-
 INCLUDEPATH += ../TestLib
 DEPENDPATH += $$PWD/.
 
 RESOURCES += \
     tool.qrc
+TRANSLATIONS += myapp.ts

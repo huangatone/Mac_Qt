@@ -16,9 +16,10 @@ void DrawWidget::paintEvent(QPaintEvent *e)
 		linearGradient.setColorAt(0.5,QColor(34,120,0));
 		linearGradient.setColorAt(0.6,Qt::transparent);
 		linearGradient.setColorAt(1.0,Qt::transparent);
+		//p.setBrush(QBrush(Qt::white));
 		p.setBrush(QBrush(linearGradient));
 
-		p.setPen(QPen(QColor(34,120,0), 1));
+		//p.setPen(QPen(QColor(34,120,0), 1));
 
 		p.drawRoundedRect(0,0,rect().width(),rect().height(),10, 10);
 

@@ -130,8 +130,8 @@
        <widget class="QSpinBox" name="spinBox">
         <property name="geometry">
          <rect>
-          <x>252</x>
-          <y>318</y>
+          <x>280</x>
+          <y>50</y>
           <width>175</width>
           <height>24</height>
          </rect>
@@ -170,6 +170,19 @@
         </property>
         <property name="pixmap">
          <pixmap resource="tool.qrc">:/mytool/img/face-smile 2.png</pixmap>
+        </property>
+       </widget>
+       <widget class="QToolButton" name="btnCalendar">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>310</y>
+          <width>26</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </widget>

@@ -19,11 +19,14 @@
 
 #include <vector>
 #include <QPrinter>
+#include <QCalendarWidget>
+#include <QWidgetAction>
 
 #include "testtoollib.h"
 #include "testclass.h"
 using namespace  std;
 
+#define O_Ver tr("Version")
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -155,6 +158,19 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	//ui->checkBox->setPixmap( ":/mytool/img/face-smile 2.png" );
 	//ui->checkBox->che
+
+	QCalendarWidget *cal_w = new QCalendarWidget();
+	cal_w->setDateRange(QDate(1900, 1, 1), QDate(2099, 12, 31));
+	cal_w->setVerticalHeaderFormat(QCalendarWidget::NoVerticalHeader);
+	cal_w->setGridVisible(true);
+	cal_w->setDateEditEnabled(false);
+
+	connect(cal_w,SIGNAL(clicked(const QDate &)),this , SLOT(slot_clicked(const QDate &)));
+	QMenu* m_cal_menu = new QMenu(this) ;
+	QWidgetAction* m_calact = new QWidgetAction(m_cal_menu);
+	m_calact->setDefaultWidget(cal_w);
+	m_cal_menu->addAction(m_calact);
+	ui->btnCalendar->setMenu(m_cal_menu);
 }
 
 MainWindow::~MainWindow()
@@ -169,20 +185,31 @@ void MainWindow::on_dateEdit_dateChanged(const QDate& date)
 	qDebug() << str;
 }
 
-void MainWindow::on_toolButton_clicked()
+
+
+void MainWindow::on_btnCalendar_clicked()
 {
 
+	QDate dt;
+	dt.setDate(2009,3,9);
+	QWidgetAction* wa = qobject_cast<QWidgetAction*>(ui->btnCalendar->menu()->actions()[0]);
+	QCalendarWidget* cw = qobject_cast<QCalendarWidget*>( wa->defaultWidget() );
+	if(cw)
+		//cw->setCurrentPage(2011,3);
+		cw->setSelectedDate(dt);
+	cw->setFocus();
+	ui->btnCalendar->showMenu();
 
-	/*Dialog dlg;
-
-	QDateEdit *ed = new QDateEdit();
-	dlg.setWidget(ed);
+	//ui->lineEdit->setText( cal_w->selectedDate().toString("yyyy/MM/dd"));
 
 
-	dlg.exec();*/
 }
 
+void MainWindow::slot_clicked(const QDate &date)
+{
+	ui->lineEdit->setText( date.toString("yyyy/MM/dd"));
 
+}
 void MainWindow::addItem(QString str)
 {
 	//ui->comboBox_2->addItem(str);
