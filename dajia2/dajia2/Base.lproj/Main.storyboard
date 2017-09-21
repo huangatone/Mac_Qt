@@ -54,7 +54,7 @@
                                     <outlet property="img_p2" destination="2YH-Hy-pfi" id="U6S-Sr-5Kv"/>
                                     <outlet property="lbl1" destination="9YA-mz-z54" id="idC-PI-hsh"/>
                                     <outlet property="txt1" destination="LVe-Zq-C0V" id="bX3-jE-nU5"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="showDetail" id="0PW-nX-y7H"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="0PW-nX-y7H"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -67,7 +67,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="lEo-6u-NbQ"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="LTX-EE-ZDV">
                             <connections>
-                                <segue destination="BTl-c3-Vy9" kind="show" id="nEp-GR-3IR"/>
+                                <segue destination="BTl-c3-Vy9" kind="show" identifier="AddItem" id="nEp-GR-3IR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

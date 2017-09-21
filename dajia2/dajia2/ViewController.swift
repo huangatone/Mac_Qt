@@ -23,6 +23,15 @@ class ViewController: UIViewController, UITextFieldDelegate ,UIImagePickerContro
         super.viewDidLoad()
         
         // Handle the text field’s user input through delegate callbacks.
+        
+        // Set up views if editing an existing Meal.
+        if let meal = meal {
+            navigationItem.title = meal.name
+            nameTextField.text = meal.name
+            photoImageView.image = meal.photo
+          
+        }
+        
         nameTextField.delegate = self
     }
     
