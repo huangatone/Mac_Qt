@@ -18,6 +18,8 @@
 		E7B13C8F1F6C50FD006A4FA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7B13C8D1F6C50FD006A4FA6 /* LaunchScreen.storyboard */; };
 		E7B13C9A1F6C50FD006A4FA6 /* dajia2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B13C991F6C50FD006A4FA6 /* dajia2Tests.swift */; };
 		E7B13CA51F6C50FD006A4FA6 /* dajia2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B13CA41F6C50FD006A4FA6 /* dajia2UITests.swift */; };
+		E7F65DEE1F744EA500EC1D97 /* MyCollectionVCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F65DED1F744EA500EC1D97 /* MyCollectionVCtr.swift */; };
+		E7F65DF01F744EEF00EC1D97 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F65DEF1F744EEF00EC1D97 /* MyCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		E7B13CA01F6C50FD006A4FA6 /* dajia2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dajia2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7B13CA41F6C50FD006A4FA6 /* dajia2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dajia2UITests.swift; sourceTree = "<group>"; };
 		E7B13CA61F6C50FD006A4FA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7F65DED1F744EA500EC1D97 /* MyCollectionVCtr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionVCtr.swift; sourceTree = "<group>"; };
+		E7F65DEF1F744EEF00EC1D97 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,8 @@
 				E797B64C1F72C3BE00940996 /* PersonTableViewController.swift */,
 				E7B13C861F6C50FD006A4FA6 /* ViewController.swift */,
 				E7B13C881F6C50FD006A4FA6 /* Main.storyboard */,
+				E7F65DED1F744EA500EC1D97 /* MyCollectionVCtr.swift */,
+				E7F65DEF1F744EEF00EC1D97 /* MyCollectionViewCell.swift */,
 				E797B64A1F71C89100940996 /* MyTableViewCell.swift */,
 				E797B6481F71C0DD00940996 /* Person.swift */,
 				E7B13C8B1F6C50FD006A4FA6 /* Assets.xcassets */,
@@ -273,6 +279,8 @@
 			files = (
 				E7B13C871F6C50FD006A4FA6 /* ViewController.swift in Sources */,
 				E7B13C851F6C50FD006A4FA6 /* AppDelegate.swift in Sources */,
+				E7F65DF01F744EEF00EC1D97 /* MyCollectionViewCell.swift in Sources */,
+				E7F65DEE1F744EA500EC1D97 /* MyCollectionVCtr.swift in Sources */,
 				E797B64D1F72C3BE00940996 /* PersonTableViewController.swift in Sources */,
 				E797B6491F71C0DD00940996 /* Person.swift in Sources */,
 				E797B64B1F71C89100940996 /* MyTableViewCell.swift in Sources */,
