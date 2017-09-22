@@ -9,5 +9,14 @@
 import UIKit
 
 class MyCollectionViewCell: UICollectionViewCell {
+    //MARK: Properties
+    
+    @IBOutlet weak var photo1: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
     
 }

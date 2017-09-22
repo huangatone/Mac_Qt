@@ -185,6 +185,19 @@
          <string/>
         </property>
        </widget>
+       <widget class="QComboBox" name="comboBox_2">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>40</y>
+          <width>104</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="maxVisibleItems">
+         <number>11</number>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_6">
        <attribute name="title">

@@ -171,4 +171,17 @@ class PersonTableViewController: UITableViewController {
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         }
     }
+   
+    @IBAction func OnFin(_ sender: UIBarButtonItem) {
+        let isPresentingInAddMealMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddMealMode {
+            dismiss(animated: true, completion: nil)
+        }
+        else if let owningNavigationController = navigationController{
+            owningNavigationController.popViewController(animated: true)
+        }
+        else {
+            fatalError("The MealViewController is not inside a navigation controller.")
+        }    }
 }
