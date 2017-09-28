@@ -71,6 +71,7 @@ FLJobWindow::FLJobWindow(QString filename,QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
+	//return;
 	setWindowState(Qt::WindowMaximized);	
 	ui.tabWidget->clear();
 	Init();
@@ -90,8 +91,8 @@ FLJobWindow::FLJobWindow(QString filename,QWidget *parent)
 	addDockWidget(Qt::RightDockWidgetArea, ui.dockWidget_3);
 	addDockWidget(Qt::LeftDockWidgetArea, ui.dockWidget);
 
-	test_write_file();
-	test_read_file();
+	//test_write_file();
+	//test_read_file();
 }
 
 FLJobWindow::~FLJobWindow()

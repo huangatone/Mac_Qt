@@ -17,10 +17,12 @@ public:
 	void addItem(QString str);
 protected slots:
 	void on_dateEdit_dateChanged( const QDate&);
-	void on_toolButton_clicked(){}
+	void on_toolButton_clicked();
 	void on_btnCalendar_clicked();
 
 	void slot_clicked(const QDate &date);
+	void on_actionEDC_triggered(bool checked = false);
+
 private:
 	Ui::MainWindow *ui;
 

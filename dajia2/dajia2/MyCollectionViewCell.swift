@@ -17,6 +17,9 @@ class MyCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
+    
+    
+  
     
 }

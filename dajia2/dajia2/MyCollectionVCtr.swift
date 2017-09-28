@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class MyCollectionVCtr: UICollectionViewController {
+class MyCollectionVCtr: UICollectionViewController,UICollectionViewDelegateFlowLayout {
 
     override func viewDidLoad() {
         super.viewDidLoad()

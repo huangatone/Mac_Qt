@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class MyFlickrViewCtr: UICollectionViewController {
+class MyFlickrViewCtr: UICollectionViewController ,UICollectionViewDelegateFlowLayout {
 
     // MARK: - Properties
     fileprivate let reuseIdentifier = "FlickrCell"
@@ -21,8 +21,14 @@ class MyFlickrViewCtr: UICollectionViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        //let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        //layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        //layout.itemSize = CGSize(width: 90, height: 90)
+        //collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        //collectionView!.dataSource = self
+        //collectionView!.delegate = self
         // Register cell classes
+        //self.collectionViewLayout.itemSize = CGSize(width: 90, height: 90)
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
@@ -105,6 +111,9 @@ class MyFlickrViewCtr: UICollectionViewController {
     
     }
     */
+    
+
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

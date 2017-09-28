@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui webenginewidgets script
+QT       += core gui webenginewidgets script svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -44,7 +44,10 @@ SOURCES += \
     jswidget.cpp \
     mtthread.cpp \
     testclass.cpp \
-    drawwidget.cpp
+    drawwidget.cpp \
+    mygraphicsview.cpp \
+    edcwidget.cpp \
+    edcwindow.cpp
 
 
 HEADERS += \
@@ -67,7 +70,10 @@ HEADERS += \
     jswidget.h \
     mtthread.h \
     testclass.h \
-    drawwidget.h
+    drawwidget.h \
+    mygraphicsview.h \
+    edcwidget.h \
+    edcwindow.h
 
 
 FORMS += \
@@ -76,7 +82,9 @@ FORMS += \
     mysettingwidget.ui \
     dialog.ui \
     myinputdialog.ui \
-    jswidget.ui
+    jswidget.ui \
+    edcwidget.ui \
+    edcwindow.ui
 
 
 INCLUDEPATH += ../TestLib

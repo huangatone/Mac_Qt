@@ -25,6 +25,9 @@
 #include "testtoollib.h"
 #include "testclass.h"
 using namespace  std;
+#include "dialog.h"
+
+#include "edcwindow.h"
 
 #define O_Ver tr("Version")
 
@@ -80,9 +83,9 @@ MainWindow::MainWindow(QWidget *parent) :
 	//connect(ui->dateEdit,SIGNAL(dateChanged(QDate)), this ,SLOT(on_dateEdit_dateChanged(QDate)));
 
 
-	 QDate dt = QDate::fromString("2012/10/2","yyyy/M/d");
+	 QDate dt = QDate::fromString("2012/11/02","yyyy/M/d");
 	 //if(dt == QDate() )qDebug() << dt;
-	 //qDebug() << dt.toString("yyyy/MM/dd");
+	 qDebug() << dt.toString("yyyy/MM/dd");
 	 dt = QDate();
 
 	 MyInputDialog dlg;
@@ -95,7 +98,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	 dlg.insertWidget(r1);
 	 dlg.insertWidget(r2);
-	// dlg.exec();
+	 //dlg.exec();
 
 	 vector<int> iVector;
 	 for(int i=0; i<20; i++)
@@ -171,6 +174,11 @@ MainWindow::MainWindow(QWidget *parent) :
 	m_calact->setDefaultWidget(cal_w);
 	m_cal_menu->addAction(m_calact);
 	ui->btnCalendar->setMenu(m_cal_menu);
+
+	//Dialog dlg11;
+	//dlg11.exec();
+	//setMenuBar( ui->menuBar);
+	//ui->menuBar->show();
 }
 
 MainWindow::~MainWindow()
@@ -184,6 +192,8 @@ void MainWindow::on_dateEdit_dateChanged(const QDate& date)
 	QString str = date.toString("yyyy/MM/dd");
 	qDebug() << str;
 }
+
+void MainWindow::on_toolButton_clicked(){}
 
 
 
@@ -210,6 +220,14 @@ void MainWindow::slot_clicked(const QDate &date)
 	ui->lineEdit->setText( date.toString("yyyy/MM/dd"));
 
 }
+
+void MainWindow::on_actionEDC_triggered(bool checked )
+{
+	qDebug() << "wwwww";
+	EDCWindow *window = new EDCWindow(this);
+	window->show();
+}
+
 void MainWindow::addItem(QString str)
 {
 	//ui->comboBox_2->addItem(str);
