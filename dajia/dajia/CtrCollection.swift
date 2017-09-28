@@ -26,12 +26,7 @@ struct Restaurant {
 
 class CtrCollection: UICollectionViewController {
 
-    enum Library {
-        case Argo
-        case JSONJoy
-        case ObjectMapper
-        case SwiftyJSON
-    }
+
     
     let courses = [
         ["name":"Swift","pic":"linux_PNG48.png"],
@@ -68,7 +63,7 @@ class CtrCollection: UICollectionViewController {
         //设置collectionView的内边距
         self.collectionView!.contentInset = UIEdgeInsetsMake(0, 5, 0, 5)
         
-        parseJSON()
+   
         
     }
 
@@ -153,42 +148,6 @@ class CtrCollection: UICollectionViewController {
     
 
     
-    func parseJSON() {
-        // set up URLRequest with URL
-        
-       let jsonStr = "{\"usr\":\"张三\",\"info\":{\"number\":[\"188\",\"189\"],\"address\":\"51load\"}}"
-       let jsonData = jsonStr.data(using:String.Encoding.utf8)
-        if let json = try? JSONSerialization.jsonObject(with: jsonData!, options: [])
-        {
-            if let jsonArray = json as? [[String: Any]]
-            {
-               print( jsonArray[0])
-            }
-            else
-            {
-                print("\n0000")
-            }
-        }
-        else
-        {
-            print("\nerror")
-        }
-        
-        let urlString = "https://api.whitehouse.gov/v1/petitions.json?limit=100"
-        
-        if let url = URL(string: urlString) {
-            if let data = try? String(contentsOf: url) {
-                let json = JSON(parseJSON: data)
-                
-                if json["metadata"]["responseInfo"]["status"].intValue == 200 {
-                    // we're OK to parse!
-                }
-            }
-        }
   
-    }
-    
-    
-   
 
 }
