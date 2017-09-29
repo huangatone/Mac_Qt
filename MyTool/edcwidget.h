@@ -5,6 +5,9 @@
 #include <QEvent>
 #include <QDebug>
 #include <QApplication>
+#include <QNetworkAccessManager>
+#include <QFile>
+#include <QNetworkReply>
 
 namespace Ui {
 class EDCWidget;
@@ -21,7 +24,8 @@ public:
 private slots:
 
 	void on_btn1_clicked();
-
+	void upLoadError(QNetworkReply::NetworkError);
+	void OnUploadProgress(qint64 ,qint64 );
 
 private:
 	 bool event(QEvent* ev);
