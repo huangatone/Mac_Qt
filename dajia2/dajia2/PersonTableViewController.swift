@@ -183,5 +183,6 @@ class PersonTableViewController: UITableViewController {
         }
         else {
             fatalError("The MealViewController is not inside a navigation controller.")
-        }    }
+        }
+    }
 }

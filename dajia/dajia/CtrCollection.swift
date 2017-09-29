@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import os.log
 
 
 private let reuseIdentifier = "Cell"
@@ -146,6 +147,35 @@ class CtrCollection: UICollectionViewController {
     */
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? "") {
+            
+        case "AddItem":
+            os_log("Adding a new meal.", log: OSLog.default, type: .debug)
+            
+        case "ShowDetail":
+            guard let ctr = segue.destination as? DajiaCtrTableView else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedCell = sender as? MyCollectionViewCell else {
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let indexPath =  self.collectionView!.indexPath(for: selectedCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let group_name = courses[indexPath.item]["name"]
+            ctr.group = group_name
+            
+        default:
+            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+        }
+    }
 
     
   

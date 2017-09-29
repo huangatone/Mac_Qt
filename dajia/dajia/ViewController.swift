@@ -10,9 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var person_name :String?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        if let person_name = person_name {
+            print ("+++++++++++++++++++++++person_name+++++++++++++++++++++")
+            print(person_name)
+            
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

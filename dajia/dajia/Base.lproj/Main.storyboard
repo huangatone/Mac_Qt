@@ -48,7 +48,7 @@
                                 <connections>
                                     <outlet property="imgHead" destination="3tg-j0-gG1" id="3tH-ev-fAU"/>
                                     <outlet property="lbName" destination="Zlc-lr-YmX" id="pyH-6Z-tQS"/>
-                                    <segue destination="qqP-Sc-bMF" kind="show" id="hdK-YK-aLW"/>
+                                    <segue destination="cc3-Ch-rOj" kind="show" identifier="ShowDetail" id="7ck-4u-jrv"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -129,7 +129,7 @@
                                     <outlet property="imgHead2" destination="lj7-wi-ZGg" id="JRE-Jn-Tzk"/>
                                     <outlet property="lb1" destination="dkh-of-c0V" id="sGh-Wg-OST"/>
                                     <outlet property="lb2" destination="3IA-xj-Zzt" id="ofh-TS-fSl"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="8ha-8R-Sct"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="8ha-8R-Sct"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -199,7 +199,6 @@
         <!--Navigation Controller-->
         <scene sceneID="W6k-4u-goM">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7dM-IE-Xxv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qqP-Sc-bMF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aO1-Aj-pci">
@@ -211,8 +210,12 @@
                         <segue destination="cc3-Ch-rOj" kind="relationship" relationship="rootViewController" id="fI9-Jq-DJB"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7dM-IE-Xxv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1158.75" y="-80.281690140845072"/>
+            <point key="canvasLocation" x="1187" y="409"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="7ck-4u-jrv"/>
+    </inferredMetricsTieBreakers>
 </document>

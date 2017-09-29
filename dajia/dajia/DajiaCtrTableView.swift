@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import os.log
 
 class DajiaCtrTableView: UITableViewController {
 
+    var group :String?
     
     let courses = [
         ["name":"Swift","pic":"linux_PNG48.png"],
@@ -37,6 +39,14 @@ class DajiaCtrTableView: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // Set up views if editing an existing Meal.
+        if let group = group {
+            print ("++++++++++++++++++++++++++++++++++++++++++++")
+            print(group)
+            
+        }
+
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -116,7 +126,52 @@ class DajiaCtrTableView: UITableViewController {
     */
 
     @IBAction func goBack(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        //dismiss(animated: true, completion: nil)
+        
+        let isPresentingInAddMealMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddMealMode {
+            dismiss(animated: true, completion: nil)
+        }
+        else if let owningNavigationController = navigationController{
+            owningNavigationController.popViewController(animated: true)
+        }
+        else {
+            fatalError("The MealViewController is not inside a navigation controller.")
+        }
 
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? "") {
+            
+        case "AddItem":
+            os_log("Adding a new meal.", log: OSLog.default, type: .debug)
+            
+        case "ShowDetail":
+            guard let ctr = segue.destination as? ViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedCell = sender as? DajiaTableViewCell else {
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+
+            
+            let person_name = courses[indexPath.item]["name"]
+            ctr.person_name = person_name
+            
+        default:
+            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+        }
+    }
+    
 }

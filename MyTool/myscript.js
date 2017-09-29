@@ -31,11 +31,7 @@ function create_html_items()
 		checkbox.value = element;
 		checkbox.id = "id";
 		var group = band_marker.get(element);
-		checkbox.onclick = function() {
-			handleClick(this, band_marker.get(element));
-    		// access properties using this keyword   
-        	console.log("no 0---------");    
-		};
+		
 
 		var label = document.createElement('label');
 		label.htmlFor = "id";
@@ -43,6 +39,18 @@ function create_html_items()
 
 		item1.appendChild(checkbox);
 		item1.appendChild(label);
+
+    var clr = document.createElement('input');
+    clr.type = "color";
+    clr.value = "#off0000";
+    item1.appendChild(clr);
+
+    checkbox.onclick = function() {
+      handleClick(this, band_marker.get(element),clr.value);
+        // access properties using this keyword   
+          console.log("no 0---------");    
+    };
+
 		document.getElementById("field_group").appendChild(item1);
     	//console.log(element);
     	pia.push(element);
@@ -79,11 +87,11 @@ function create_html_items()
 
 }
 	
-function getCircle(magnitude)
+function getCircle(magnitude,color)
 {
     return {
       path: google.maps.SymbolPath.CIRCLE,
-      fillColor: 'red',
+      fillColor: color,
       fillOpacity: .6,
       scale: Math.pow(2, magnitude) / 2,
       strokeColor: 'white',
@@ -161,7 +169,7 @@ function createMarker(group,name,lng,lat)
             position: latLng,
             map: null,
             label: name,
-            icon: getCircle(5)
+            icon: getCircle(5,'red')
           });
 
     var infowindow = new google.maps.InfoWindow({
@@ -177,11 +185,12 @@ function createMarker(group,name,lng,lat)
     group.push(marker);
 }
 // Removes/shows the markers from the map, but keeps them in the array.
-function showMarkers(group,m)
+function showMarkers(group,m,color)
 {
     for (var i = 0; i < group.length; i++)
     {
         group[i].setMap(m);
+        group[i].setIcon( getCircle(3.5,color) )
     }
 }
 
@@ -193,7 +202,7 @@ function handleClick123(cb)
    
 }
  //checkbox click event
-function handleClick(cb,group)
+function handleClick(cb,group,color)
 {
     var p = null;
     console.log("clicked");
@@ -202,7 +211,7 @@ function handleClick(cb,group)
         p = map;
     }
  
-    showMarkers(group,p);
+    showMarkers(group,p,color);
 }
 
 function read_sheet(wb,sheetName)
