@@ -30,19 +30,23 @@ class CtrCollection: UICollectionViewController {
 
     
     let courses = [
-        ["name":"Swift","pic":"linux_PNG48.png"],
-        ["name":"OC","pic":"linux_PNG48.png"],
-        ["name":"java","pic":"linux_PNG48"],
-        ["name":"php","pic":"linux_PNG48.png"],
-        ["name":"Swift","pic":"swift.png"],
-        ["name":"Xcode","pic":"xcode.png"],
-        ["name":"Java","pic":"java.png"],
-        ["name":"PHP","pic":"php.png"],
-        ["name":"JS","pic":"js.png"],
-        ["name":"React","pic":"react.png"],
-        ["name":"Ruby","pic":"ruby.png"],
-        ["name":"HTML","pic":"html.png"],
-        ["name":"C#","pic":"c#.png"]
+        ["name":"会计税务","pic":"linux_PNG48.png","group":"accounting"],
+        ["name":"家具百货","pic":"linux_PNG48.png","group":"accounting"],
+        ["name":"地产经纪","pic":"linux_PNG48","group":"accounting"],
+        ["name":"电力电器","pic":"linux_PNG48.png","group":"accounting"],
+        ["name":"房屋贷款","pic":"swift.png","group":"accounting"],
+        ["name":"虫害防治","pic":"xcode.png","group":"accounting"],
+        ["name":"保险投资","pic":"java.png","group":"accounting"],
+        ["name":"搬家清洁","pic":"php.png","group":"accounting"],
+        ["name":"房屋法律","pic":"js.png","group":"accounting"],
+        ["name":"橱柜材料","pic":"react.png","group":"accounting"],
+        ["name":"屋顶车库","pic":"ruby.png","group":"accounting"],
+        ["name":"网络电话","pic":"html.png","group":"accounting"],
+        ["name":"冷暖空调","pic":"html.png","group":"accounting"],
+        ["name":"树木园艺","pic":"html.png","group":"accounting"],
+        ["name":"其它服务","pic":"html.png","group":"accounting"],
+        ["name":"网络电话","pic":"html.png","group":"accounting"],
+        ["name":"翻建装修","pic":"c#.png","group":"accounting"]
     ]
     
     override func viewDidLoad() {
@@ -169,7 +173,7 @@ class CtrCollection: UICollectionViewController {
                 fatalError("The selected cell is not being displayed by the table")
             }
             
-            let group_name = courses[indexPath.item]["name"]
+            let group_name = courses[indexPath.item]["group"]
             ctr.group = group_name
             
         default:

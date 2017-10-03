@@ -14,20 +14,19 @@ class DajiaCtrTableView: UITableViewController {
     var group :String?
     
     let courses = [
-        ["name":"Swift","pic":"linux_PNG48.png"],
-        ["name":"OC","pic":"linux_PNG48.png"],
-        ["name":"java","pic":"linux_PNG48"],
-        ["name":"php","pic":"linux_PNG48.png"],
-        ["name":"Swift","pic":"swift.png"],
-        ["name":"Xcode","pic":"xcode.png"],
-        ["name":"Java","pic":"java.png"],
-        ["name":"PHP","pic":"php.png"],
-        
-        ["name":"JS","pic":"js.png"],
-        ["name":"React","pic":"react.png"],
-        ["name":"Ruby","pic":"ruby.png"],
-        ["name":"HTML","pic":"html.png"],
-        ["name":"C#","pic":"c#.png"]
+        ["name":"Tom","pic":"linux_PNG48.png","text":"Normal","recommand":"me","pic_rec":"Wiki.png","text_rec":"normal"],
+        ["name":"Machel","pic":"linux_PNG48.png","text":"Normal","recommand":"me","pic_rec":"Wiki.png","text_rec":"normal"],
+        ["name":"Steve","pic":"linux_PNG48","text":"Normal","recommand":"me","pic_rec":"Wiki.png","text_rec":"normal"],
+        ["name":"Joone","pic":"linux_PNG48.png","text":"Normal","recommand":"me","pic_rec":"Wiki.png","text_rec":"normal"],
+        ["name":"Cobel","pic":"swift.png","text":"Normal","recommand":"me","pic_rec":"Wiki.png","text_rec":"normal"],
+        ["name":"Loly","pic":"xcode.png","text":"Normal","recommand":"me","pic_rec":"r.png","text_rec":"normal"],
+        ["name":"Java","pic":"java.png","text":"Normal","recommand":"me","pic_rec":"r.png","text_rec":"normal"],
+        ["name":"PHP","pic":"php.png","text":"Normal","recommand":"me","pic_rec":"r.png","text_rec":"normal"],
+        ["name":"JS","pic":"js.png","text":"Normal","recommand":"me","pic_rec":"r.png","text_rec":"normal"],
+        ["name":"React","pic":"react.png","text":"Normal","recommand":"me","pic_rec":"r.png","text_rec":"normal"],
+        ["name":"Ruby","pic":"ruby.png","text":"Normal","recommand":"me","pic_rec":"r.png","text_rec":"normal"],
+        ["name":"HTML","pic":"html.png","text":"Normal","recommand":"me","pic_rec":"r.png","text_rec":"normal"],
+        ["name":"C#","pic":"c#.png","text":"Normal","recommand":"me","pic_rec":"r.png","text_rec":"normal"]
     ]
 
     
@@ -73,8 +72,8 @@ class DajiaCtrTableView: UITableViewController {
         // Configure the cell...
         cell.lb1.text =  courses[indexPath.item]["name"]
         cell.imgHead1.image = UIImage(named: courses[indexPath.item]["pic"]!)
-        cell.lb2.text =  "j0123457998855j"
-        cell.imgHead2.image = UIImage(named: courses[indexPath.item]["pic"]!)
+        cell.lb2.text =  courses[indexPath.item]["text"]
+        cell.imgHead2.image = UIImage(named: courses[indexPath.item]["pic_rec"]!)
         //cell.imgHead1.contentMode = .scaleAspectFit
         return cell
     }

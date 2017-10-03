@@ -47,7 +47,8 @@ SOURCES += \
     drawwidget.cpp \
     mygraphicsview.cpp \
     edcwidget.cpp \
-    edcwindow.cpp
+    edcwindow.cpp \
+    splitphotodialog.cpp
 
 
 HEADERS += \
@@ -73,7 +74,8 @@ HEADERS += \
     drawwidget.h \
     mygraphicsview.h \
     edcwidget.h \
-    edcwindow.h
+    edcwindow.h \
+    splitphotodialog.h
 
 
 FORMS += \
@@ -84,7 +86,8 @@ FORMS += \
     myinputdialog.ui \
     jswidget.ui \
     edcwidget.ui \
-    edcwindow.ui
+    edcwindow.ui \
+    splitphotodialog.ui
 
 
 INCLUDEPATH += ../TestLib

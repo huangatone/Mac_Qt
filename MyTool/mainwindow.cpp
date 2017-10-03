@@ -28,6 +28,7 @@ using namespace  std;
 #include "dialog.h"
 
 #include "edcwindow.h"
+#include "splitphotodialog.h"
 
 #define O_Ver tr("Version")
 
@@ -226,6 +227,12 @@ void MainWindow::on_actionEDC_triggered(bool checked )
 	qDebug() << "wwwww";
 	EDCWindow *window = new EDCWindow(this);
 	window->show();
+}
+
+void MainWindow::on_actionSplit_triggered(bool checked)
+{
+	SplitPhotoDialog dlg;
+	dlg.exec();
 }
 
 void MainWindow::addItem(QString str)

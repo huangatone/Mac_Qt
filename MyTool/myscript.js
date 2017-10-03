@@ -2,20 +2,12 @@ var splitter,cont1,cont2;
 var last_x,window_width;
 var map ;
 
-
-var value_b17_config_x = [];
-value_b17_config_x[0] = 'x';
-var site_value = [];
-site_value[0] = value_b17_config_x; 
-
-
 //band list
 var band_list = [];
 var band_marker = new Map();
 
 function create_html_items()
-{
-	var pia = [];
+{	
  
    band_list.forEach(function(element) {
 
@@ -52,39 +44,8 @@ function create_html_items()
     };
 
 		document.getElementById("field_group").appendChild(item1);
-    	//console.log(element);
-    	pia.push(element);
-    	pia.push(band_marker.get(element).length);
+ 
 	});
-	
-    //init label value;
-   
-
-    
-    createChart(pia);
-	//console.log("------value--------");
-    //for(var i=0; i < site_value.length; i++)
-   //// {
-   // 	var g = site_value[i];
-   // 	for(var j = 0; j< g.length; j++)
-   // 		console.log( g[j]);
-    //}
-
-    var chart3 = c3.generate({
-           bindto: '#chart3',
-    data: {
-      x:'x',
-        columns: site_value,
-        types: {
-            data1: 'spline'
-           
-        },
-        
-	    }
-	});
-
-	G_chart();
-
 }
 	
 function getCircle(magnitude,color)
@@ -161,7 +122,7 @@ function initMap()
 }
 
 //create a marker
-function createMarker(group,name,lng,lat)
+function createMarker(group,name,lng,lat,clr,tip,e)
 {
     var latLng = new google.maps.LatLng(  lat,lng);
     var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
@@ -169,17 +130,23 @@ function createMarker(group,name,lng,lat)
             position: latLng,
             map: null,
             label: name,
-            icon: getCircle(5,'red')
+            icon: getCircle(5,clr)
           });
 
     var infowindow = new google.maps.InfoWindow({
-      content: "test information"
+      content: tip
     });
 
     marker.addListener('click', function() {
-      map.setZoom(8);
-      map.setCenter(marker.getPosition());
-      infowindow.open(marker.get('map'), marker);
+      if(url != "")
+        window.location.href = "http://www.baidu.com";
+      else if( tip != "")
+      {
+        map.setZoom(8);
+        map.setCenter(marker.getPosition());
+        infowindow.open(marker.get('map'), marker);
+      }
+     
     });
 
     group.push(marker);
@@ -193,14 +160,7 @@ function showMarkers(group,m,color)
         group[i].setIcon( getCircle(3.5,color) )
     }
 }
-
- //checkbox click event
-function handleClick123(cb)
-{
-    var p = null;
-    console.log("clicked");
-   
-}
+ 
  //checkbox click event
 function handleClick(cb,group,color)
 {
@@ -214,8 +174,32 @@ function handleClick(cb,group,color)
     showMarkers(group,p,color);
 }
 
+function Creat_Maker(group, name, clr,lng,lat,tip, e)
+{
+   if(band_list.indexOf(group) <= -1)
+  {
+    band_list.push(group);
+    var m = [];
+    band_marker.set( group, m);
+  }
+
+  createMarker(band_marker.get(group),name,lng,lat,clr,tip,e);
+
+  console.log("index: " + band_list.indexOf(group));
+}
+
 function read_sheet(wb,sheetName)
 {
+   var name;
+    var group;
+
+    var tput;
+    var lng;
+    var lat;
+    var clr;
+    var tip;
+    var url;
+
     var rowObj =XLSX.utils.sheet_to_row_object_array(wb.Sheets[sheetName]);
     var jsonObj = JSON.stringify(rowObj);
 
@@ -225,48 +209,25 @@ function read_sheet(wb,sheetName)
     {
           //console.log(key); // log the current property name, the last is "".
 
-          if( key.trim() == "ENUM")
-          {
+          if( key.trim().toUpperCase() == "NAME")
             name = value.trim();
-          }
-          else if(key.trim() == "B17")
-          {
-            band = value.trim();
-          }
-          else if( key.trim() == "Long")
-          {
+          else if(key.trim().toUpperCase()  == "GROUP")
+            group = value.trim();
+          else if( key.trim().toUpperCase()  == "LONG")
             lng = value.trim();
-          }
-          else if(key.trim() == "Lat" )//&& tput < 3000
+          else if(key.trim().toUpperCase()  == "LAT" )
+            lat = value;  
+          else if (key.trim().toUpperCase()  == "TIP" )
+            tip = value;
+          else if(key.trim().toUpperCase() == "COLOR")
+            clr = value;
+          else if( key.trim().toUpperCase() == "EVENT")
+            url = value;
+          else if( key.trim().toUpperCase()  == "END")
           {
-          		
-                lat = value;
-                if(band_list.indexOf(band) <= -1)
-                {
-                	band_list.push(band);
-                	var m = [];
-                	band_marker.set( band, m);
-
-                	var v = [];
-                	v[0] = band;
-                	site_value[ site_value.length] = v;
-                }
-
-                createMarker(band_marker.get(band),name,lng,lat);
-
-				console.log("index: " + band_list.indexOf(band));
-                console.log ("data: " + site_value[ band_list.indexOf(band)+1 ][0]);
-                site_value[ band_list.indexOf(band) +1].push(tput);
-                if (value_b17_config_x.length < site_value[ band_list.indexOf(band)+1].length)
-                {
-                	value_b17_config_x.push ( site_value[ band_list.indexOf(band)+1].length );
-                }
-
-               
-                band = "";       
-            }
-            else if (key.trim() == "Estimated" )
-                    tput = value;
+              Creat_Maker(group, name, 'red',lng,lat,"tip", "e");            
+              group = "";     
+          }
           //console.log(value);
           //console.log('---------------\n');
           return value;     // return the unchanged property value.
@@ -280,12 +241,7 @@ function read_sheet(wb,sheetName)
 //------------ read xml file ------------------------------
 function ExcelExport(event)
 {
-    var name;
-    var band;
-
-    var tput;
-    var lng;
-    var lat;
+   
 
     var index = 0;
     var input = event.target;
@@ -307,49 +263,5 @@ function ExcelExport(event)
     console.log('---------------\n');
 }
 
-function createChart(pia_data)
-{
-    var column = [];
-    for(var i=0; i< pia_data.length; i+=2)
-    {
-        column[i/2] = [ pia_data[i],pia_data[i+1]];
-    }
-
-	var chart4 = c3.generate({
-           bindto: '#chart4',
-		   data: {
-		        columns: column,
-		        types: {
-		            data1: 'area',
-		            data2: 'area-spline'
-		        }
-		    }
-	});
-        chart4.transform('pie');
-}
 
 
-function G_chart() 
-{
-	
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['ID', 'X', 'Y', 'Temperature'],
-          ['',   80,  167,      12],
-          ['',   79,  136,      13],
-          ['',   78,  184,      5],
-          ['',   72,  278,      23],
-          ['',   81,  200,      21],
-          ['',   72,  170,      10],
-          ['',   68,  477,      8]
-        ]);
-
-        var options = {
-          colorAxis: {colors: ['yellow', 'red']}
-        };
-
-        var chart = new google.visualization.BubbleChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-}

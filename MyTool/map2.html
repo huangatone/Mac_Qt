@@ -84,18 +84,6 @@ else
     // Blink engine detection
     var isBlink = (isChrome || isOpera) && !!window.CSS;
 
-var output = 'Detecting browsers by ducktyping:<hr>';
-output += 'isFirefox: ' + isFirefox + '<br>';
-output += 'isChrome: ' + isChrome + '<br>';
-output += 'isSafari: ' + isSafari + '<br>';
-output += 'isOpera: ' + isOpera + '<br>';
-output += 'isIE: ' + isIE + '<br>';
-output += 'isEdge: ' + isEdge + '<br>';
-output += 'isBlink: ' + isBlink + '<br>';
-document.body.innerHTML = output;
-
-
-
 	
 	function handleClick1(cb,group)
 {
@@ -110,7 +98,8 @@ document.body.innerHTML = output;
         <div id="div2"></div>
 		<div id="splitter"></div>
         <div id="div1">
-            <input type="color">
+       <h5> Excel Format</h5>
+       <h6 style="border:2px solid Tomato;color:blue;"> GROUP | NAME | LONG | LAT | COLOR | TIPS | EVENT | END</h6>
         <form >      
           <input type="file" id="file" ng-model="csvFile"  onchange='ExcelExport(event)'/>
         </form>

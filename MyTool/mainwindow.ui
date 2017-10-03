@@ -296,6 +296,7 @@
      <string>File</string>
     </property>
     <addaction name="actionEDC"/>
+    <addaction name="actionSplit"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -311,6 +312,11 @@
   <action name="actionEDC">
    <property name="text">
     <string>EDC</string>
+   </property>
+  </action>
+  <action name="actionSplit">
+   <property name="text">
+    <string>Split</string>
    </property>
   </action>
  </widget>

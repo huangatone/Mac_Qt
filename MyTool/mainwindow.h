@@ -22,6 +22,7 @@ protected slots:
 
 	void slot_clicked(const QDate &date);
 	void on_actionEDC_triggered(bool checked = false);
+	void on_actionSplit_triggered(bool checked = false);
 
 private:
 	Ui::MainWindow *ui;
