@@ -4,6 +4,7 @@
 #include <QPainter>
 #include <QMouseEvent>
 #include <QDebug>
+#include <QFileDialog>
 
 bool SortVLine( QLine &l1, QLine &l2)
 {
@@ -114,6 +115,7 @@ int SplitPhotoDialog::getY(int value, float ratio)
 void SplitPhotoDialog::save_image()
 {
 	QImage img( ui->lineEdit->text() );
+	QString file_name = "/Users/rong/Desktop/Work/cc_%1_%2.png";
 
 	QRect rt = img.rect();
 	std::sort( v_line.begin(),v_line.end(), SortVLine);
@@ -140,17 +142,19 @@ void SplitPhotoDialog::save_image()
 			h = getY(h_line[n].y1(),y_ratio);
 
 			QImage sub(w-x, h-y,QImage::Format_ARGB32);
+			sub.fill(Qt::transparent);
 			QPainter p(&sub);
 			p.drawImage( sub.rect(), img, QRect( x, y, w -x , h-y ) );
-			QString str = QString("/Users/rong/Desktop/Work/dd_%1_%2.png").arg(n).arg(m);
+			QString str = file_name.arg(n).arg(m);
 			sub.save( str );
 			x = w;
 		}
 
 		QImage sub(rt.width()-x, h-y,QImage::Format_ARGB32);
 		QPainter p(&sub);
+		sub.fill(Qt::transparent);
 		p.drawImage( sub.rect(), img, QRect( x, y, rt.width()-x,  h-y ) );
-		QString str = QString("/Users/rong/Desktop/Work/dd_%1_%2.png").arg(n).arg(col);
+		QString str = file_name.arg(n).arg(col);
 		sub.save( str );
 		y = h;
 	}
@@ -162,18 +166,20 @@ void SplitPhotoDialog::save_image()
 		h = rt.height();
 
 		QImage sub(w-x, h-y,QImage::Format_ARGB32);
+		sub.fill(Qt::transparent);
 		QPainter p(&sub);
-		p.drawImage( sub.rect(), img, QRect( x, y, v_line[m].x1(), rt.height()) );
+		p.drawImage( sub.rect(), img, QRect( x, y, w - x, h - y ) );
 
-		QString str = QString("/Users/rong/Desktop/Work/dd_%1_%2.png").arg(row).arg(m);
+		QString str = file_name.arg(row).arg(m);
 		sub.save( str );
 		x = w;
 	}
 
 	QImage sub(rt.width()-x, rt.height()-y,QImage::Format_ARGB32);
 	QPainter p(&sub);
+	sub.fill(Qt::transparent);
 	p.drawImage( sub.rect(), img, QRect( x, y, rt.width()-x, rt.height()-y) );
-	QString str = QString("/Users/rong/Desktop/Work/dd_%1_%2.png").arg(row).arg(col);
+	QString str = file_name.arg(row).arg(col);
 	sub.save( str );
 
 }
@@ -213,7 +219,9 @@ void SplitPhotoDialog::on_spinBox_2_valueChanged(int arg1)
 
 void SplitPhotoDialog::on_toolButton_clicked()
 {
-
+	auto str = QFileDialog::getOpenFileName();
+	ui->lineEdit->setText(str);
+	update();
 }
 
 void SplitPhotoDialog::on_buttonBox_clicked(QAbstractButton *button)

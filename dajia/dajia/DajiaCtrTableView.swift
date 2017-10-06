@@ -14,7 +14,7 @@ class DajiaCtrTableView: UITableViewController {
     var group :String?
     
     let courses = [
-        ["name":"Tom","pic":"linux_PNG48.png","text":"Normal","recommand":"me","pic_rec":"Wiki.png","text_rec":"normal"],
+        ["name":"Tom","pic":"cc_0_0.png","text":"Normal","recommand":"me","pic_rec":"cc_0_1.png","text_rec":"normal"],
         ["name":"Machel","pic":"linux_PNG48.png","text":"Normal","recommand":"me","pic_rec":"Wiki.png","text_rec":"normal"],
         ["name":"Steve","pic":"linux_PNG48","text":"Normal","recommand":"me","pic_rec":"Wiki.png","text_rec":"normal"],
         ["name":"Joone","pic":"linux_PNG48.png","text":"Normal","recommand":"me","pic_rec":"Wiki.png","text_rec":"normal"],

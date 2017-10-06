@@ -24,7 +24,7 @@ class MyCollectionViewCell: UICollectionViewCell
         imgHead.frame = bounds
         imgHead.contentMode = .scaleAspectFit
         
-        imgHead.backgroundColor = UIColor(red: 0, green: 0, blue: 50, alpha: 0.2)
+        //imgHead.backgroundColor = UIColor(red: 0, green: 0, blue: 50, alpha: 0.2)
     
     }
 }
