@@ -24,6 +24,7 @@ SplitPhotoDialog::SplitPhotoDialog(QWidget *parent) :
 	ui->setupUi(this);
 	QImage img("/Users/rong/Desktop/Work/12.png");
 
+	setMouseTracking(true);
 	//ui->label->setPixmap( QPixmap::fromImage( img.scaled(ui->label->size())));
 }
 
@@ -53,6 +54,10 @@ void SplitPhotoDialog::mousePressEvent(QMouseEvent *event)
 			break;
 		}
 	}
+	if(v_select_line != -1 && h_select_line != -1 )
+	{
+
+	}
 }
 
 void SplitPhotoDialog::mouseReleaseEvent(QMouseEvent *event)
@@ -63,12 +68,12 @@ void SplitPhotoDialog::mouseReleaseEvent(QMouseEvent *event)
 
 void SplitPhotoDialog::mouseMoveEvent(QMouseEvent *event)
 {
+	int x = event->x();
+	int y = event->y();
+	qDebug() << "button "  << event->buttons();
 	if(event->buttons() & Qt::LeftButton)
 	{
-		int x = event->x();
-		int y = event->y();
-
-		qDebug() << "Moving.....";
+		//qDebug() << "Moving.....";
 		if(h_select_line != -1)
 		{
 			h_line[h_select_line] = QLine( h_line[h_select_line].x1(),y, h_line[h_select_line].x2(),y);
@@ -80,6 +85,36 @@ void SplitPhotoDialog::mouseMoveEvent(QMouseEvent *event)
 		}
 
 		update();
+	}
+	else if( event->buttons() == Qt::NoButton)
+	{
+		bool b1 , b2;
+		b1 = false;
+		b2 = false;
+		for(int n=0; n< v_line.count(); n++)
+		{
+			if( isInLine (  x, v_line[n].x1() ))
+			{
+				b1 = true;
+				break;
+			}
+		}
+		h_select_line = -1;
+		for(int n=0; n< h_line.count(); n++)
+		{
+			if( isInLine( y, h_line[n].y1() ))
+			{
+				b2 = true;
+				break;
+			}
+		}
+
+		if(b1 && b2)
+			setCursor(Qt::SizeAllCursor);
+		else if(b1)
+			setCursor(Qt::SplitVCursor);
+		else if(b2)
+			setCursor(Qt::SplitHCursor);
 	}
 }
 
@@ -115,7 +150,7 @@ int SplitPhotoDialog::getY(int value, float ratio)
 void SplitPhotoDialog::save_image()
 {
 	QImage img( ui->lineEdit->text() );
-	QString file_name = "/Users/rong/Desktop/Work/cc_%1_%2.png";
+	QString file_name = "/Users/rong/Desktop/Work/" + ui->lineEdit_2->text() +  "_%1_%2.png";
 
 	QRect rt = img.rect();
 	std::sort( v_line.begin(),v_line.end(), SortVLine);
@@ -140,22 +175,12 @@ void SplitPhotoDialog::save_image()
 		{
 			w = getX( v_line[m].x1() ,x_ratio);
 			h = getY(h_line[n].y1(),y_ratio);
-
-			QImage sub(w-x, h-y,QImage::Format_ARGB32);
-			sub.fill(Qt::transparent);
-			QPainter p(&sub);
-			p.drawImage( sub.rect(), img, QRect( x, y, w -x , h-y ) );
 			QString str = file_name.arg(n).arg(m);
-			sub.save( str );
+			save(img,str,QRect(0,0, w -x , h-y ),QRect( x, y, w -x , h-y ));
 			x = w;
-		}
-
-		QImage sub(rt.width()-x, h-y,QImage::Format_ARGB32);
-		QPainter p(&sub);
-		sub.fill(Qt::transparent);
-		p.drawImage( sub.rect(), img, QRect( x, y, rt.width()-x,  h-y ) );
+		}		
 		QString str = file_name.arg(n).arg(col);
-		sub.save( str );
+		save(img,str,QRect(0,0, rt.width()-x,  h-y ),QRect( x, y, rt.width()-x,  h-y ));
 		y = h;
 	}
 
@@ -163,25 +188,13 @@ void SplitPhotoDialog::save_image()
 	for(int m=0; m< col; m++)
 	{
 		w = getX( v_line[m].x1() ,x_ratio);
-		h = rt.height();
-
-		QImage sub(w-x, h-y,QImage::Format_ARGB32);
-		sub.fill(Qt::transparent);
-		QPainter p(&sub);
-		p.drawImage( sub.rect(), img, QRect( x, y, w - x, h - y ) );
-
+		h = rt.height();		
 		QString str = file_name.arg(row).arg(m);
-		sub.save( str );
+		save(img,str,QRect(0,0, w -x , h-y ),QRect( x, y, w - x, h - y ));
 		x = w;
 	}
-
-	QImage sub(rt.width()-x, rt.height()-y,QImage::Format_ARGB32);
-	QPainter p(&sub);
-	sub.fill(Qt::transparent);
-	p.drawImage( sub.rect(), img, QRect( x, y, rt.width()-x, rt.height()-y) );
 	QString str = file_name.arg(row).arg(col);
-	sub.save( str );
-
+	save(img,str,QRect(0,0,rt.width()-x, rt.height()-y),QRect( x, y, rt.width()-x, rt.height()-y));
 }
 
 bool SplitPhotoDialog::isInLine(int value, int line)
@@ -230,4 +243,13 @@ void SplitPhotoDialog::on_buttonBox_clicked(QAbstractButton *button)
 	{
 		save_image();
 	}
+}
+
+void SplitPhotoDialog::save(QImage& img, QString file_name, QRect rt_dest,QRect rt_source)
+{
+	QImage sub(rt_dest.width(), rt_dest.height(),QImage::Format_ARGB32);
+	QPainter p(&sub);
+	sub.fill(Qt::transparent);
+	p.drawImage( sub.rect(), img, rt_source);
+	sub.save( file_name );
 }

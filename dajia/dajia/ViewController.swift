@@ -22,19 +22,19 @@ class ViewController: UIViewController {
             print(person_name)
             
         }
-        img1.frame = CGRect(x: 0, y: 0, width: 100, height: 180)
+        //img1.frame = CGRect(x: 0, y: 0, width: 100, height: 180)
         img1.contentMode = .scaleAspectFit
         
-        img1.backgroundColor = UIColor(red: 0, green: 0, blue: 50, alpha: 0.2)
+        //img1.backgroundColor = UIColor(red: 0, green: 0, blue: 50, alpha: 0.2)
 
-        img2.frame = CGRect(x: 0, y: 0, width: 100, height: 180)
+        //img2.frame = CGRect(x: 0, y: 0, width: 100, height: 180)
         img2.contentMode = .scaleAspectFit
         
-        img2.backgroundColor = UIColor(red: 0, green: 0, blue: 50, alpha: 0.2)
+       // img2.backgroundColor = UIColor(red: 0, green: 0, blue: 50, alpha: 0.2)
 
         
-        img1.image =  UIImage(named: "New")
-        img2.image =  UIImage(named: "Wiki")
+        img1.image =  UIImage(named: "cc_0_0")
+        img2.image =  UIImage(named: "cc_0_1")
         
     }
 

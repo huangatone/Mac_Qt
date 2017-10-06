@@ -29,6 +29,7 @@ protected:
 	void paintEvent(QPaintEvent *event);
 
 	void save_image();
+	void save(QImage& img, QString file_name,  QRect rt_dest,QRect rt_source);
 
 	bool isInLine(int value, int line);
 	int getX(int value, float ratio);
