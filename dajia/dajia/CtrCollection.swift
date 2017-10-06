@@ -30,23 +30,23 @@ class CtrCollection: UICollectionViewController {
 
     
     let courses = [
-        ["name":"会计税务","pic":"linux_PNG48.png","group":"accounting"],
-        ["name":"家具百货","pic":"linux_PNG48.png","group":"accounting"],
-        ["name":"地产经纪","pic":"linux_PNG48","group":"accounting"],
-        ["name":"电力电器","pic":"linux_PNG48.png","group":"accounting"],
-        ["name":"房屋贷款","pic":"swift.png","group":"accounting"],
-        ["name":"虫害防治","pic":"xcode.png","group":"accounting"],
-        ["name":"保险投资","pic":"java.png","group":"accounting"],
-        ["name":"搬家清洁","pic":"php.png","group":"accounting"],
-        ["name":"房屋法律","pic":"js.png","group":"accounting"],
-        ["name":"橱柜材料","pic":"react.png","group":"accounting"],
-        ["name":"屋顶车库","pic":"ruby.png","group":"accounting"],
-        ["name":"网络电话","pic":"html.png","group":"accounting"],
-        ["name":"冷暖空调","pic":"html.png","group":"accounting"],
-        ["name":"树木园艺","pic":"html.png","group":"accounting"],
-        ["name":"其它服务","pic":"html.png","group":"accounting"],
-        ["name":"网络电话","pic":"html.png","group":"accounting"],
-        ["name":"翻建装修","pic":"c#.png","group":"accounting"]
+        ["name":"会计税务","pic":"dd_0_0.png","group":"accounting"],
+        ["name":"家具百货","pic":"dd_0_1.png","group":"accounting"],
+        ["name":"地产经纪","pic":"dd_0_2.png","group":"accounting"],
+        ["name":"电力电器","pic":"dd_0_3.png","group":"accounting"],
+        ["name":"房屋贷款","pic":"dd_0_4.png","group":"accounting"],
+        ["name":"虫害防治","pic":"dd_1_0.png","group":"accounting"],
+        ["name":"保险投资","pic":"dd_1_1.png","group":"accounting"],
+        ["name":"搬家清洁","pic":"dd_1_2.png","group":"accounting"],
+        ["name":"房屋法律","pic":"dd_1_3.png","group":"accounting"],
+        ["name":"橱柜材料","pic":"dd_1_4.png","group":"accounting"],
+        ["name":"屋顶车库","pic":"dd_2_0.png","group":"accounting"],
+        ["name":"网络电话","pic":"dd_2_1.png","group":"accounting"],
+        ["name":"冷暖空调","pic":"dd_2_2.png","group":"accounting"],
+        ["name":"树木园艺","pic":"dd_2_3.png","group":"accounting"],
+        ["name":"其它服务","pic":"dd_2_4.png","group":"accounting"],
+        ["name":"网络电话","pic":"dd_3_0.png","group":"accounting"],
+        ["name":"翻建装修","pic":"dd_3_1.png","group":"accounting"]
     ]
     
     override func viewDidLoad() {
