@@ -57,11 +57,35 @@
                             <outlet property="delegate" destination="gc6-Wb-nU0" id="4Mu-E7-bjt"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="DaJia" id="jLM-h7-9ly"/>
+                    <navigationItem key="navigationItem" title="DaJia" id="jLM-h7-9ly">
+                        <barButtonItem key="rightBarButtonItem" title="关于" id="Dw8-Xp-bDX">
+                            <connections>
+                                <segue destination="R8I-am-RSt" kind="show" identifier="aboutMe" id="XVj-JM-dKT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W0c-XV-S4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="268.125" y="-69.718309859154928"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5ZD-rv-FOO">
+            <objects>
+                <viewController id="R8I-am-RSt" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aBv-jh-44t"/>
+                        <viewControllerLayoutGuide type="bottom" id="awJ-ZV-tkq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Brv-rP-cP2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OrJ-Tw-MPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1095" y="-681"/>
         </scene>
         <!--List-->
         <scene sceneID="0vj-kY-4zv">
@@ -76,7 +100,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YzU-Bc-O3b" id="T5Y-VE-SbX">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fFF-1H-cVH">
@@ -220,8 +244,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="gene" destination="Qo1-H5-gEv" id="ku8-Ng-UEQ"/>
                         <outlet property="img1" destination="gIG-7P-bzR" id="1QP-6R-iXN"/>
                         <outlet property="img2" destination="God-L9-rWB" id="ndo-Ws-WsK"/>
+                        <outlet property="profesion" destination="hdi-Vd-Mcn" id="YcN-sJ-Z69"/>
+                        <outlet property="reText" destination="hjX-vT-xU4" id="Jlc-vx-Dzk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

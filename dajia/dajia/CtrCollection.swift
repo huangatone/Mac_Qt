@@ -175,7 +175,8 @@ class CtrCollection: UICollectionViewController {
             
             let group_name = courses[indexPath.item]["group"]
             ctr.group = group_name
-            
+         case "aboutMe":
+            os_log("about me.", log: OSLog.default, type: .debug)
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         }

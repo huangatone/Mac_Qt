@@ -29,7 +29,7 @@ class DajiaTableViewCell: UITableViewCell {
         imgHead1.translatesAutoresizingMaskIntoConstraints = true
         //imgHead1.contentMode = .scaleAspectFit
         //imgHead1.layer.masksToBounds = YES;
-        imgHead1.backgroundColor = UIColor(red: 0, green: 0, blue: 50, alpha: 0.2)
+        //imgHead1.backgroundColor = UIColor(red: 0, green: 0, blue: 50, alpha: 0.2)
         
     }
 

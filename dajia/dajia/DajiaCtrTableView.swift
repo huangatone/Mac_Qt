@@ -14,19 +14,12 @@ class DajiaCtrTableView: UITableViewController {
     var group :String?
     
     let courses = [
-        ["name":"Tom","pic":"cc_0_0.png","text":"Normal","recommand":"me","pic_rec":"cc_0_1.png","text_rec":"normal"],
-        ["name":"Machel","pic":"linux_PNG48.png","text":"Normal","recommand":"me","pic_rec":"Wiki.png","text_rec":"normal"],
-        ["name":"Steve","pic":"linux_PNG48","text":"Normal","recommand":"me","pic_rec":"Wiki.png","text_rec":"normal"],
-        ["name":"Joone","pic":"linux_PNG48.png","text":"Normal","recommand":"me","pic_rec":"Wiki.png","text_rec":"normal"],
-        ["name":"Cobel","pic":"swift.png","text":"Normal","recommand":"me","pic_rec":"Wiki.png","text_rec":"normal"],
-        ["name":"Loly","pic":"xcode.png","text":"Normal","recommand":"me","pic_rec":"r.png","text_rec":"normal"],
-        ["name":"Java","pic":"java.png","text":"Normal","recommand":"me","pic_rec":"r.png","text_rec":"normal"],
-        ["name":"PHP","pic":"php.png","text":"Normal","recommand":"me","pic_rec":"r.png","text_rec":"normal"],
-        ["name":"JS","pic":"js.png","text":"Normal","recommand":"me","pic_rec":"r.png","text_rec":"normal"],
-        ["name":"React","pic":"react.png","text":"Normal","recommand":"me","pic_rec":"r.png","text_rec":"normal"],
-        ["name":"Ruby","pic":"ruby.png","text":"Normal","recommand":"me","pic_rec":"r.png","text_rec":"normal"],
-        ["name":"HTML","pic":"html.png","text":"Normal","recommand":"me","pic_rec":"r.png","text_rec":"normal"],
-        ["name":"C#","pic":"c#.png","text":"Normal","recommand":"me","pic_rec":"r.png","text_rec":"normal"]
+        ["name":"Tom:水管师傅","pic":"cc_0_0.png","text":"提供：荣","recommand":"me","pic_rec":"cc_0_1.png","text_rec":"normal"],
+        ["name":"Machel：电工师傅","pic":"cc_0_1.png","text":"提供：荣","recommand":"me","pic_rec":"cc_1_0.png","text_rec":"normal"],
+        ["name":"Steve：暖气师傅","pic":"cc_0_2.png","text":"提供：荣","recommand":"me","pic_rec":"cc_1_2.png","text_rec":"normal"],
+        ["name":"Joone：园林设计","pic":"cc_1_0.png","text":"提供：荣","recommand":"me","pic_rec":"cc_2_0.png","text_rec":"normal"],
+        ["name":"Cobel：草地维护","pic":"cc_1_1.png","text":"推荐：fisher","recommand":"me","pic_rec":"cc_1_2.png","text_rec":"normal"],
+        ["name":"Loly：专修游泳池","pic":"cc_0_1.png","text":"王教练：运动教练","recommand":"推荐：fisher","pic_rec":"cc_1_1.png","text_rec":"normal"]
     ]
 
     
