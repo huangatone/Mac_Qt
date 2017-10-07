@@ -80,12 +80,60 @@
                     <view key="view" contentMode="scaleToFill" id="Brv-rP-cP2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="GEo-ML-HMK">
+                                <rect key="frame" x="16" y="64" width="288" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bHn-P4-eVv">
+                                <rect key="frame" x="16" y="200" width="288" height="348"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">深圳瑞宝电脑技术服务有限公司，成立于2008年，我公司为各行各业提供专业的IT技术服务，经过3年多的努力与发展，已具一定的规模及实力，现拥有一支技术精湛的IT服务团队，以卓越的服务品质、专业安全的技术服务实力，为不同群体的用户提供更高更优质的IT服务。
+
+我们的服务项目：企业电脑外包维护，电脑维修上门维修，电脑组装配件销售，网络工程综合布线，监控安装及维修，专业数据恢复，服务器局域网组建，打印机传真机维修，中小企业网站建设等多种IT服务一体化公司。
+
+24小时服务：为了支持客户的工作及日常运用，瑞宝电脑运用最先进的技术24小时为用户服务，并免费提供远程协助，电话支持。
+
+我们的目标是：努力成为所有用户最满意的IT技术服务提供商，我们相信有您的支持我们会做的更好。
+
+我们的理念：“诚信为本、实力为先，全心全意为客户”，我们公司秉承客户至上、服务至上的经营理念，以卓越的IT服务品质、专业的技术服务实力、技术精湛的客户服务团队，保障客户在信息时代的高速路上驰骋，又以稳固、发展、忠诚、高效、团结与创新的精神，尊重人才注重技术，使客户在享受信息科技发展最新成果的同时不断获得最大的收益。
+
+选择我们四大理由：
+
+节省开支：对中小型企业，计算机数量不多，如雇专职工程师需要支付相应的工资、福利和社保等费用，而维护工作量又不大，因而支出会显得较高。而采用我们公司的服务，可以大大降低因系统维护而造成的相关费用，节约企业开支。
+
+经验丰富：我们为企业提供功能强大服务，包括建立系统设备档案、系统维护记录、系统维护记录分析等服务项目。我们的工程师不仅经验丰富，而且随时能获得公司强大的技术支持，保障用户系统正常运行。
+
+技术专业：我们为企业提供功能强大服务，包括建立系统设备档案、系统维护记录、系统维护记录分析等服务项目。我们的工程师不仅经验丰富，而且随时能获得公司强大的技术支持，保障用户系统正常运行。
+
+阳光服务：计算机系统对企业越来越重要，而IT业人员流动性也相当大，因而保障系统维护的稳定至关重要。我们有效的管理制度和真诚为客户服务的理念，能最大程度地确保计算机系统稳定，为企业正常运作提供有力保障。我们的承诺：修不好、未能查出故障将不收取任何费用。
+
+我们的承诺：
+
+承诺一：接到报修电话，快速抵达维修现场。
+
+承诺二：如实说明故障原因，不欺骗客户。
+
+承诺三：配件如需带回检测，详细记录配件序列号或贴上易碎标，保证客户的财产安全。
+
+承诺四：不乱收费，所有维修价格按市场价收取。
+
+承诺五：由于我们的原因，故障未解决，不收取任何费用。
+
+承诺六：客户投诉属实，上门退还所有维修维护费用。
+
+承诺七：软件故障一个星期内出现相同故障，免费再次上门服务。</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OrJ-Tw-MPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1095" y="-681"/>
+            <point key="canvasLocation" x="1095" y="-681.33802816901414"/>
         </scene>
         <!--List-->
         <scene sceneID="0vj-kY-4zv">
@@ -186,44 +234,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" tag="2" contentMode="center" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="W8G-Ya-4Bl">
+                            <stackView opaque="NO" tag="2" contentMode="center" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="W8G-Ya-4Bl">
                                 <rect key="frame" x="3" y="67" width="314" height="498"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HXD-BG-Yhh">
-                                        <rect key="frame" x="8" y="8" width="296" height="162.5"/>
+                                        <rect key="frame" x="8" y="8" width="296" height="156"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hdi-Vd-Mcn">
-                                                <rect key="frame" x="0.0" y="0.0" width="148" height="162.5"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4GB-rK-f2y">
+                                                <rect key="frame" x="0.0" y="0.0" width="148" height="156"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBp-UK-Bxj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="148" height="19.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hdi-Vd-Mcn">
+                                                        <rect key="frame" x="0.0" y="19.5" width="148" height="116"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5t1-sO-QbP">
+                                                        <rect key="frame" x="0.0" y="135.5" width="148" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="God-L9-rWB">
-                                                <rect key="frame" x="148" y="0.0" width="148" height="162.5"/>
+                                                <rect key="frame" x="148" y="0.0" width="148" height="156"/>
                                             </imageView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YvO-OU-93l">
-                                        <rect key="frame" x="8" y="170.5" width="296" height="163"/>
+                                        <rect key="frame" x="8" y="174" width="296" height="156"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="261" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gIG-7P-bzR">
-                                                <rect key="frame" x="0.0" y="0.0" width="148" height="163"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="148" height="156"/>
                                             </imageView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hjX-vT-xU4">
-                                                <rect key="frame" x="148" y="0.0" width="148" height="163"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dVb-vG-osc">
+                                                <rect key="frame" x="148" y="0.0" width="148" height="156"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6h-nM-4rI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="148" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hjX-vT-xU4">
+                                                        <rect key="frame" x="0.0" y="20.5" width="148" height="115"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ckb-w2-4kB">
+                                                        <rect key="frame" x="0.0" y="135.5" width="148" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="owk-Cc-3Hh">
-                                        <rect key="frame" x="8" y="333.5" width="296" height="162.5"/>
+                                        <rect key="frame" x="8" y="340" width="296" height="156"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Qo1-H5-gEv">
-                                                <rect key="frame" x="0.0" y="0.0" width="296" height="162.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="296" height="156"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -292,6 +374,9 @@
             <point key="canvasLocation" x="1187" y="409"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="286" height="176"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7ck-4u-jrv"/>
     </inferredMetricsTieBreakers>
