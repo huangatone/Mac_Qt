@@ -31,8 +31,8 @@ class CtrCollection: UICollectionViewController {
     
     let courses = [
         ["name":"会计税务","pic":"dd_0_0.png","group":"accounting"],
-        ["name":"家具百货","pic":"dd_0_1.png","group":"accounting"],
-        ["name":"地产经纪","pic":"dd_0_2.png","group":"accounting"],
+        ["name":"家具百货","pic":"dd_0_1.png","group":"fun"],
+        ["name":"地产经纪","pic":"dd_0_2.png","group":"fang"],
         ["name":"电力电器","pic":"dd_0_3.png","group":"accounting"],
         ["name":"房屋贷款","pic":"dd_0_4.png","group":"accounting"],
         ["name":"虫害防治","pic":"dd_1_0.png","group":"accounting"],

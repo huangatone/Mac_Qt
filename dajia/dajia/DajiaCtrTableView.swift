@@ -13,6 +13,10 @@ class DajiaCtrTableView: UITableViewController {
 
     var group :String?
     
+    @IBOutlet weak var my_title: UINavigationItem!
+    
+    
+    
     let courses = [
         ["name":"Tom:水管师傅","pic":"cc_0_0.png","text":"提供：荣","recommand":"me","pic_rec":"cc_0_1.png","text_rec":"normal"],
         ["name":"Machel：电工师傅","pic":"cc_0_1.png","text":"提供：荣","recommand":"me","pic_rec":"cc_1_0.png","text_rec":"normal"],
@@ -35,6 +39,7 @@ class DajiaCtrTableView: UITableViewController {
         if let group = group {
             print ("++++++++++++++++++++++++++++++++++++++++++++")
             print(group)
+            my_title.title = group
             
             if let path = Bundle.main.path(forResource:"g1", ofType: "json") {
                 do {
