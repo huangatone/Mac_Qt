@@ -21,9 +21,9 @@ class MyCollectionViewCell: UICollectionViewCell
         lbName.textAlignment = .center
         lbName.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
     
-        imgHead.frame = bounds
+        //imgHead.frame = bounds
         imgHead.contentMode = .scaleAspectFit
-        
+     
         //imgHead.backgroundColor = UIColor(red: 0, green: 0, blue: 50, alpha: 0.2)
     
     }

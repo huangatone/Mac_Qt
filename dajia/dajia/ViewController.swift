@@ -18,6 +18,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var gene: UITextView!
     
+    static var isRead = false
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -45,6 +48,8 @@ class ViewController: UIViewController {
         
         gene.text = "SharkVesion技术服务有限公司，成立于2008年，我公司为各行各业提供专业的IT技术服务，经过3年多的努力与发展，已具一定的规模及实力，现拥有一支技术精湛的IT服务团队，以卓越的服务品质、专业安全的技术服务实力，为不同群体的用户提供更高更优质的IT服务。"
         
+        read_file()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +57,18 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func read_file()
+    {
+        if( ViewController.isRead == false)
+        {
+            print ("read - a file")
+            ViewController.isRead  = true
+        }
+        else
+        {
+            print("already")
+        }
+    }
 
 }
 

@@ -36,9 +36,24 @@ class DajiaCtrTableView: UITableViewController {
             print ("++++++++++++++++++++++++++++++++++++++++++++")
             print(group)
             
+            if let path = Bundle.main.path(forResource:"g1", ofType: "json") {
+                do {
+                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                        if let json = try? JSON(data: data) as JSON
+                        {
+                            print("--------------")
+                            print(json[0]["name"])
+                        }
+                    }
+                catch let error {
+                    print(error.localizedDescription)
+                }
+            } else {
+                print("Invalid filename/path.")
+            }
+            
+            
         }
-
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -166,4 +181,56 @@ class DajiaCtrTableView: UITableViewController {
         }
     }
     
+    func read_json()
+    {
+        print("read file")
+        if let path = Bundle.main.path(forResource:"a", ofType: "json")
+        {
+            // print(path)
+            do
+            {
+                let jsonStr = try String(contentsOfFile: path)
+                print("file content\n")
+                
+                
+                let lines = jsonStr.components(separatedBy: "\n")
+                for line in lines {
+                    let words = line.components(separatedBy: " ")
+                    print("------\(words[0]) ")
+                }
+                
+                print(jsonStr)
+                
+                /*let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                 if let json = try? JSON(data: data) as JSON
+                 {
+                 print("--------------")
+                 print(json[0]["name"])
+                 }*/
+                
+                if let jsonData = jsonStr.data(using: String.Encoding.utf8, allowLossyConversion: false) {
+                    //.........
+                    if let userArray = try? JSONSerialization.jsonObject(with: jsonData,
+                                                                         options: .allowFragments) as? [[String: AnyObject]],
+                        let phones = userArray?[0]["phones"] as? [[String: AnyObject]],
+                        let number = phones[0]["number"] as? String
+                    {
+                        // 找到电话号码
+                        print("第一个联系人的第一个电话号码：",number)
+                    }
+                }
+                
+                //----------------
+            }
+            catch let error
+            {
+                print(error.localizedDescription)
+            }
+        }
+        else
+        {
+            print("Invalid filename/path.")
+        }
+        
+    }
 }

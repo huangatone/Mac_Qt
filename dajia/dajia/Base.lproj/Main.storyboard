@@ -81,7 +81,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="GEo-ML-HMK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="GEo-ML-HMK">
                                 <rect key="frame" x="16" y="64" width="288" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -89,11 +89,11 @@
                                 <rect key="frame" x="16" y="200" width="288" height="348"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">深圳瑞宝电脑技术服务有限公司，成立于2008年，我公司为各行各业提供专业的IT技术服务，经过3年多的努力与发展，已具一定的规模及实力，现拥有一支技术精湛的IT服务团队，以卓越的服务品质、专业安全的技术服务实力，为不同群体的用户提供更高更优质的IT服务。
+                                <mutableString key="text">SharkVesion技术服务有限公司，成立于2014年，我公司为各行各业提供专业的IT技术服务，经过3年多的努力与发展，已具一定的规模及实力，现拥有一支技术精湛的IT服务团队，以卓越的服务品质、专业安全的技术服务实力，为不同群体的用户提供更高更优质的IT服务。
 
-我们的服务项目：企业电脑外包维护，电脑维修上门维修，电脑组装配件销售，网络工程综合布线，监控安装及维修，专业数据恢复，服务器局域网组建，打印机传真机维修，中小企业网站建设等多种IT服务一体化公司。
+我们的服务项目：iOS App开发， Android App开发，网站设计，应用程序开发（Windows &amp; Mac）。
 
-24小时服务：为了支持客户的工作及日常运用，瑞宝电脑运用最先进的技术24小时为用户服务，并免费提供远程协助，电话支持。
+24小时服务：为了支持客户的工作及日常运用，并免费提供远程协助，电话支持。
 
 我们的目标是：努力成为所有用户最满意的IT技术服务提供商，我们相信有您的支持我们会做的更好。
 
@@ -109,21 +109,7 @@
 
 阳光服务：计算机系统对企业越来越重要，而IT业人员流动性也相当大，因而保障系统维护的稳定至关重要。我们有效的管理制度和真诚为客户服务的理念，能最大程度地确保计算机系统稳定，为企业正常运作提供有力保障。我们的承诺：修不好、未能查出故障将不收取任何费用。
 
-我们的承诺：
-
-承诺一：接到报修电话，快速抵达维修现场。
-
-承诺二：如实说明故障原因，不欺骗客户。
-
-承诺三：配件如需带回检测，详细记录配件序列号或贴上易碎标，保证客户的财产安全。
-
-承诺四：不乱收费，所有维修价格按市场价收取。
-
-承诺五：由于我们的原因，故障未解决，不收取任何费用。
-
-承诺六：客户投诉属实，上门退还所有维修维护费用。
-
-承诺七：软件故障一个星期内出现相同故障，免费再次上门服务。</mutableString>
+联系人：荣  电话 6**6*6***6</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -148,7 +134,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YzU-Bc-O3b" id="T5Y-VE-SbX">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fFF-1H-cVH">
@@ -244,13 +230,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="148" height="156"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBp-UK-Bxj">
-                                                        <rect key="frame" x="0.0" y="0.0" width="148" height="19.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="148" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hdi-Vd-Mcn">
-                                                        <rect key="frame" x="0.0" y="19.5" width="148" height="116"/>
+                                                        <rect key="frame" x="0.0" y="20.5" width="148" height="115"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -301,11 +287,14 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="owk-Cc-3Hh">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Yxp-Yg-89m">
                                         <rect key="frame" x="8" y="340" width="296" height="156"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wiki" translatesAutoresizingMaskIntoConstraints="NO" id="3o8-y5-vdc">
+                                                <rect key="frame" x="0.0" y="0.0" width="296" height="78"/>
+                                            </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Qo1-H5-gEv">
-                                                <rect key="frame" x="0.0" y="0.0" width="296" height="156"/>
+                                                <rect key="frame" x="0.0" y="78" width="296" height="78"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -375,6 +364,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Wiki" width="1198" height="1198"/>
         <image name="logo" width="286" height="176"/>
     </resources>
     <inferredMetricsTieBreakers>
